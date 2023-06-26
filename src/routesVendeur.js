@@ -9,6 +9,7 @@ import SignUp from "layouts/authentication/sign-up";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import Stocks from "layouts/stocks/stocks";
+import Production from "layouts/production/production";
 
 const routesVendeur = [
   {
@@ -27,6 +28,16 @@ const routesVendeur = [
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/stocks",
     component: <Stocks />,
+    role: "vendeurs"
+  },
+
+  {
+    type: "collapse",
+    name: "Plan de Production",
+    key: "tables",
+    icon: <Icon fontSize="small">table_view</Icon>,
+    route: "/production",
+    component: <Production/>,
     role: "vendeurs"
   },
   

@@ -18,6 +18,7 @@ import SignUp from "layouts/authentication/sign-up";
 import Verification_Role from "layouts/verication_Role";
 import Dashboard_Em from "layouts/dashboard_EM";
 import Dashboard_Vendeur from "layouts/dashboard_Vendeur";
+import Production from "layouts/production/production";
 
 import Vendeur from "layouts/vendeur"
 import Commandes_Entreprise_Miniere from "layouts/commandes/entreprise_Miniere";
@@ -55,6 +56,7 @@ export default function App() {
                 <Route path="/offre" element={<Offre/>} />
                 <Route path="/vendeur" element={<Vendeur/>} />
                 <Route path="/stocks" element={<Stocks/>} />
+                <Route path="/production" element={<Production/>} />
 
               </Routes>
             
