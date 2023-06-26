@@ -1,5 +1,5 @@
 
-import Dashboard from "layouts/dashboard_EM";
+import Dashboard_Vendeur from "layouts/dashboard_EM";
 import Tables from "layouts/tables";
 import Billing from "layouts/billing";
 import Profile from "layouts/profile";
@@ -15,8 +15,8 @@ const routesVendeur = [
     name: "Dashboard",
     key: "dashboard",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/dashboard",
-    component: <Dashboard />,
+    route: "/dashboard_Vendeur",
+    component: <Dashboard_Vendeur />,
     role: "vendeurs"
   },
   {
