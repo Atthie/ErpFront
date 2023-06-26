@@ -22,7 +22,7 @@ import brandDark from "assets/images/logo-ct-dark.png";
 
 
 
-function Offre() {
+function Demande_Cotation() {
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
@@ -110,4 +110,4 @@ function Offre() {
   );
 }
 
-export default Offre;
+export default Demande_Cotation;

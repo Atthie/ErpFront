@@ -9,7 +9,7 @@ import MDBox from "components/MDBox";
 
 import Sidenav from "examples/Sidenav";
 
-import routes from "routesVendeur";
+import routes from "../../routes/routesVendeur";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 
 import brandWhite from "assets/images/logo-ct.png";
