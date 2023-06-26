@@ -20,32 +20,39 @@ import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Icon from "@mui/material/Icon";
+import "../../../../App.css"
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+import MDButton from "components/MDButton";
+import Popup2 from "layouts/Popup2/Popup2";
 
 function DefaultInfoCard({ color, icon, title, description, value }) {
   return (
-    <Card>
+    <Card className="vb">
+      
       <MDBox p={2} mx={3} display="flex" justifyContent="center">
+        
         <MDBox
           display="grid"
           justifyContent="center"
           alignItems="center"
           bgColor={color}
           color="white"
-          width="4rem"
-          height="4rem"
+          // width="8rem"
+          // height="7rem"
           shadow="md"
           borderRadius="lg"
           variant="gradient"
+          
+          
         >
-          <Icon fontSize="default">{icon}</Icon>
+          <Icon className="icon24" fontSize="default"><span class="material-icons">request_quote</span></Icon>
         </MDBox>
       </MDBox>
       <MDBox pb={2} px={2} textAlign="center" lineHeight={1.25}>
-        <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
+        <MDTypography variant="h2" fontWeight="medium" textTransform="capitalize">
           {title}
         </MDTypography>
         {description && (
@@ -54,12 +61,14 @@ function DefaultInfoCard({ color, icon, title, description, value }) {
           </MDTypography>
         )}
         {description && !value ? null : <Divider />}
-        {value && (
-          <MDTypography variant="h5" fontWeight="medium">
-            {value}
-          </MDTypography>
-        )}
+        
+        
+        
       </MDBox>
+        <Popup2/>
+       
+     
+
     </Card>
   );
 }

@@ -21,6 +21,7 @@ import Dashboard_Vendeur from "layouts/dashboard_Vendeur";
 
 import Vendeur from "layouts/vendeur"
 import Commandes_Entreprise_Miniere from "layouts/commandes/entreprise_Miniere";
+import Stocks from "layouts/stocks/stocks";
 
 import Offre from "layouts/offre/offres"
 export default function App() {
@@ -53,6 +54,7 @@ export default function App() {
                 <Route path="/commande_Em" element={<Commandes_Entreprise_Miniere/>} />
                 <Route path="/offre" element={<Offre/>} />
                 <Route path="/vendeur" element={<Vendeur/>} />
+                <Route path="/stocks" element={<Stocks/>} />
 
               </Routes>
             
