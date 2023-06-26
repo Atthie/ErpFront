@@ -16,7 +16,7 @@ import projectsTableData from "layouts/tables/data/projectsTableData";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import routes from "routesVendeur";
+import routes from "../../routes/routesVendeur";
 import Sidenav from "examples/Sidenav";
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
