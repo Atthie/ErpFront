@@ -24,6 +24,7 @@ import Commandes_Entreprise_Miniere from "layouts/commandes/entreprise_Miniere";
 import Stocks from "layouts/stocks/stocks";
 
 import Offre from "layouts/offre/offres"
+import Demande_Cotation from "layouts/demande_Cotation/demande_cotation";
 export default function App() {
   const [controller] = useMaterialUIController();
   const {
@@ -55,6 +56,7 @@ export default function App() {
                 <Route path="/offre" element={<Offre/>} />
                 <Route path="/vendeur" element={<Vendeur/>} />
                 <Route path="/stocks" element={<Stocks/>} />
+                <Route path="/demande_cotation" element={<Demande_Cotation/>} />
 
               </Routes>
             
