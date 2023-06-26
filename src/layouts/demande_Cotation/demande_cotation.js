@@ -3,7 +3,7 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "co
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-
+import axios from 'axios';
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
@@ -65,10 +65,23 @@ function Demande_Cotation() {
         setOnMouseEnter(false);
       }
     };
-
-
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
+  const [cotations, setCotations] = useState([]);
+  useEffect(() => {
+    const fetchCotations = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/getdemandeCotation');
+        setCotations(response.data);
+      } catch (error) {
+        console.error('Une erreur est survenue lors de la récupération des cotations :', error);
+      }
+    };
+
+    fetchCotations();
+  }, []);
+
+
 
   return (
     <DashboardLayout>
@@ -81,29 +94,25 @@ function Demande_Cotation() {
         onMouseLeave={handleOnMouseLeave}
       />
       <DashboardNavbar />
-      <MDBox py={3}>
-                <MDTypography variant="h3">Offres</MDTypography>
-
+        <MDBox py={3}>
+          <MDTypography variant="h3">Demande de Cotation</MDTypography>
         </MDBox>
       <DataTable py={9}
   table={{
     columns: [
-      { Header: "Date", accessor: "startDate", width: "25%" },
-      { Header: "Reference", accessor: "reference", width: "30%" },
-      { Header: "Vendeur", accessor: "vendeur" },
+      { Header: "Date", accessor: "date", width: "25%" },
+      { Header: "Description", accessor: "description", width: "30%" },
+      { Header: "Date Limite", accessor: "date_limite" },
       { Header: "Etat", accessor: "etat", width: "12%" },
       { Header: "Action", accessor: "action", width: "12%" },
-
     ],
-    rows: [
-      {
-        reference: "DMO01",
-        vendeur: "Baorixile",
-        etat: "En Attente",
-        action: <MDButton variant="gradient" color="info" size="small">Valider</MDButton>,
-        startDate: "4/11/2021",
-      },
-          ]
+    rows: cotations.map((cotation) => ({
+      date: cotation.createdAt,
+      description: cotation.description,
+      date_limite: cotation.dateFin,
+      etat: cotation.etat,
+      action: cotation.etat !== 'publié' ? <MDButton variant="gradient" color="info" size="small">Modifier</MDButton> : null,
+    }))
   }}
 />
     </DashboardLayout>

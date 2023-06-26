@@ -152,8 +152,21 @@ const handleDescriptionChange = (event) => {
             alert("Une erreur s'est produite lors de la publication de l'offre.");
           });
       } else if (result.isDenied) {
-        Swal.fire('Brouillon enregistré', '', 'info');
-      }
+        const data = {
+          dateFin: selectedDate,
+          description: descriptionValue,
+          userId: idUser,
+          etat:'Brouillon'
+        };
+        console.log(data)
+        axios.post("http://localhost:5000/demandeCotation", data)
+          .then(response => {
+            Swal.fire('Brouillon enregistré!', '', 'success');
+          })
+          .catch(error => {
+            console.error(error);
+            alert("Une erreur s'est produite lors de la publication de l'offre.");
+          });      }
     });
   };
   
