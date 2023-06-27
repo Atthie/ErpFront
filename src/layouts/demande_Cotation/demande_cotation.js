@@ -1,8 +1,6 @@
 import { useState, useEffect} from "react";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
 import axios from 'axios';
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
