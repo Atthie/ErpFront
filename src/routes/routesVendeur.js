@@ -89,9 +89,9 @@ const routesVendeur = [
 
   {
     type: "collapse",
-    name: "Parametre",
+    name: "Parametres",
     key: "tables",
-    icon: <Icon fontSize="small">build</Icon>,
+    icon: <Icon fontSize="small">settings</Icon>,
     route: "/profilr",
     component: <Overview/>,
     role: "vendeurs"

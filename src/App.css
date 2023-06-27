@@ -8,6 +8,35 @@
  
 }
 
+.vk{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 20px 20px 20px;
+  box-shadow: 63px rgb(81, 80, 80);
+
+  height: 280px;
+ 
+}
+
+.cab{
+  display: flex;
+  flex-direction: column;
+}
+
+.cal{
+  display: flex;
+  flex-direction: column;
+  margin-left: 80px;
+  margin-top: 30px;
+}
+
+.cn{
+  margin-left: 60px;
+}
+
 .ii{
   margin-left: 10px;
 }

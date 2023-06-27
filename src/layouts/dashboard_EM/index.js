@@ -31,6 +31,7 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
  
 import axios from "axios"
 import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData";
+import "../../App.css"
 
 
 function Dashboard_EM() {
@@ -187,13 +188,12 @@ const handleDescriptionChange = (event) => {
               <MDBox mb={1.5}>
                 <ComplexStatisticsCard
                   color="dark"
-                  icon="business"
-                  title="Bookings"
+                  icon="assignment"
+                  title="Demande de Cotation"
                   count={281}
                   percentage={{
                     color: "success",
-                    amount: "+55%",
-                    label: "than lask week",
+                    
                   }}
                 />
               </MDBox>
@@ -201,13 +201,12 @@ const handleDescriptionChange = (event) => {
             <Grid item xs={12} md={6} lg={3}>
               <MDBox mb={1.5}>
                 <ComplexStatisticsCard
-                  icon="order"
-                  title="Today's Users"
+                  icon="local_mall"
+                  title="Commandes"
                   count="2,300"
                   percentage={{
                     color: "success",
-                    amount: "+3%",
-                    label: "test",
+                    
                   }}
                 />
               </MDBox>
@@ -216,13 +215,12 @@ const handleDescriptionChange = (event) => {
               <MDBox mb={1.5}>
                 <ComplexStatisticsCard
                   color="success"
-                  icon="store"
-                  title="Revenue"
+                  icon="receipt_long"
+                  title="Offres"
                   count="34k"
                   percentage={{
                     color: "success",
-                    amount: "+1%",
-                    label: "than yesterday",
+                   
                   }}
                 />
               </MDBox>
@@ -231,13 +229,12 @@ const handleDescriptionChange = (event) => {
               <MDBox mb={1.5}>
                 <ComplexStatisticsCard
                   color="primary"
-                  icon="person_add"
-                  title="Followers"
+                  icon="groups_2"
+                  title="Vendeurs"
                   count="+91"
                   percentage={{
                     color: "success",
-                    amount: "",
-                    label: "Just updated",
+                    
                   }}
                 />
               </MDBox>
@@ -245,19 +242,29 @@ const handleDescriptionChange = (event) => {
         </Grid>
         <MDBox py={9}>
                 <MDTypography variant="h3">Soumettre une demande d'Offre</MDTypography>
-
+                <div className="ligne"></div>
         </MDBox>
-        <Grid container  columns={3}  spacing={2}>
-                <Grid item xs={12} md={6} lg={3}>          
-                  <MDInput type="date" value={selectedDate} onChange={handleDateChange}  label="Date limite"  />        
-                </Grid>
+        
+        <div className="vk">
+           <Grid  container  columns={3}  spacing={2}>
+                <div className="cal">
+                  <Grid item xs={18} md={4} lg={3}>          
+                     <MDInput type="date" value={selectedDate} onChange={handleDateChange}  label="Date limite"  />        
+                  </Grid>
+                </div>
+                
                 <Grid item xs={12} md={6} lg={3}>
-                <MDInput label="Description" sx={{ width: "100%" }} onChange={handleDescriptionChange}  multiline rows={8}   />
+                  <div className="cn">
+                    <MDInput className="cn"  label="Description" sx={{ width: "96%" }} onChange={handleDescriptionChange}  multiline rows={8}   />
+                  </div>
+                
                 </Grid>
-                <Grid item xs={12} md={6} lg={3}>
-                <MDInput label="" sx={{ width: "100%",display: "none"  }}  value={idUser}  />
+                <Grid   item xs={19} md={6} lg={3}>
+                <MDInput label="" sx={{ width: "96%",display: "none"  }}  value={idUser}  />
                 </Grid>
         </Grid>
+        </div>
+       
         <MDBox mt={2.5}>
       <Grid container justifyContent={"flex-end"}>
         <Grid item md={1.2}>

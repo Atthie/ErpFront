@@ -163,6 +163,7 @@ function Dashboard_Vendeur() {
                   <Grid item xs={12} md={6} lg={3}>
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
+                        color="primary"
                         icon="shopping_cart"
                         title="Commandes"
                         count="2,300"
