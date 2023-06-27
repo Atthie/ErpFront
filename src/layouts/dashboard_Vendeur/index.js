@@ -132,7 +132,7 @@ function Dashboard_Vendeur() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="dark"
-                        icon="weekend"
+                        icon="receipt_long"
                         title="Offres"
                         count={281}
                         percentage={{
@@ -147,7 +147,7 @@ function Dashboard_Vendeur() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="success"
-                        icon="weekend"
+                        icon="shopping_bag"
                         title="Stocks"
                         count={281}
                         percentage={{
@@ -163,11 +163,11 @@ function Dashboard_Vendeur() {
                   <Grid item xs={12} md={6} lg={3}>
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
-                        icon="leaderboard"
+                        icon="shopping_cart"
                         title="Commandes"
                         count="2,300"
                         percentage={{
-                          color: "success",
+                          color: "Primary",
                         
                         }}
                       />
@@ -177,8 +177,8 @@ function Dashboard_Vendeur() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="success"
-                        icon="store"
-                        title="Fournisseurs"
+                        icon="groups_2"
+                        title="Clients"
                         count="34k"
                         percentage={{
                           color: "success",

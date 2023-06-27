@@ -31,7 +31,7 @@ const routesVendeur = [
     type: "collapse",
     name: "Gestion de Stocks",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">inventory</Icon>,
     route: "/stocks",
     component: <Stocks />,
     role: "vendeurs"
@@ -41,7 +41,7 @@ const routesVendeur = [
     type: "collapse",
     name: "Plan de Production",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">pages</Icon>,
     route: "/production",
     component: <Production/>,
     role: "vendeurs"
@@ -51,7 +51,7 @@ const routesVendeur = [
     type: "collapse",
     name: "Cotation",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">article</Icon>,
     route: "/cotation",
     component: <Cotation/>,
     role: "vendeurs"
@@ -61,7 +61,7 @@ const routesVendeur = [
     type: "collapse",
     name: "Comptabilite",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">point_of_sale</Icon>,
     route: "/comptabilite",
     component: <Comptabilite/>,
     role: "vendeurs"
@@ -71,7 +71,7 @@ const routesVendeur = [
     type: "collapse",
     name: "Commandes",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">shopping_basket</Icon>,
     route: "/commande_vendeur",
     component: <Commande_Vendeur/>,
     role: "vendeurs"
@@ -81,7 +81,7 @@ const routesVendeur = [
     type: "collapse",
     name: "Portefeuil Client",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">account_balance_wallet</Icon>,
     route: "/portefeuil",
     component: <Portefeuil/>,
     role: "vendeurs"
@@ -91,7 +91,7 @@ const routesVendeur = [
     type: "collapse",
     name: "Parametre",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">build</Icon>,
     route: "/profilr",
     component: <Overview/>,
     role: "vendeurs"
