@@ -91,7 +91,7 @@ function Demande_Cotation() {
       cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/deleteDemandeCotation/${id}`)
+        axios.delete(`http://localhost:5000/deleteDM/${id}`)
           .then((response) => {
             Swal.fire('Suppression réussie', 'La demande de cotation a été supprimée.', 'success');
             setCotations(cotations.filter((cotation) => cotation.id !== id));
