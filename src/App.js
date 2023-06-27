@@ -59,6 +59,7 @@ export default function App() {
                 <Route path="/verification_Role" element={<Verification_Role/>} />
                 <Route path="/dashboard_Em" element={<Dashboard_Em/>} />
                 <Route path="/dashboard_Vendeur" element={<Dashboard_Vendeur/>} />
+
                 <Route path="/commande_Em" element={<Commandes_Entreprise_Miniere/>} />
                 <Route path="/offre" element={<Offre/>} />
                 <Route path="/vendeur" element={<Vendeur/>} />

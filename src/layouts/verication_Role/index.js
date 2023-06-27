@@ -52,6 +52,7 @@ function Dashboard_EM() {
               {getRoutes(routes)}
               {role === "Entreprise_Miniere" && <Route path="*" element={<Navigate to="/dashboard_Em" />} />}
               {role === "Vendeur" && <Route path="*" element={<Navigate to="/dashboard_Vendeur" />} />}
+              {role === "Admin" && <Route path="*" element={<Navigate to="/dashboard_Admin" />} />}
 
             </Routes>
           </> 
