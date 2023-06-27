@@ -9,7 +9,7 @@ import MDBox from "components/MDBox";
 
 import Sidenav from "examples/Sidenav";
 
-import routes from "routesVendeur";
+import routes from "../../routes/routesVendeur";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 
 import brandWhite from "assets/images/logo-ct.png";
@@ -30,6 +30,8 @@ import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData
 // Dashboard components
 import Projects from "layouts/dashboard_EM/components/Projects";
 import OrdersOverview from "layouts/dashboard_EM/components/OrdersOverview";
+import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
+import "../../App.css"
 
 function Dashboard_Vendeur() {
   const { sales, tasks } = reportsLineChartData;
@@ -122,121 +124,156 @@ function Dashboard_Vendeur() {
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
           />
-      <MDBox py={3}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="dark"
-                icon="weekend"
-                title="Bookings"
-                count={281}
-                percentage={{
-                  color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                icon="leaderboard"
-                title="Today's Users"
-                count="2,300"
-                percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "test",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="success"
-                icon="store"
-                title="Revenue"
-                count="34k"
-                percentage={{
-                  color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Followers"
-                count="+91"
-                percentage={{
-                  color: "success",
-                  amount: "",
-                  label: "Just updated",
-                }}
-              />
-            </MDBox>
-          </Grid>
-        </Grid>
-        <MDBox mt={4.5}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsBarChart
-                  color="info"
-                  title="website views"
-                  description="Last Campaign Performance"
-                  date="campaign sent 2 days ago"
-                  chart={reportsBarChartData}
-                />
+      <div className="cont">
+            <MDBox py={3}>
+              <div className="cont-form1">
+                  <Grid container spacing={3}>
+                  <Grid item xs={12} md={6} lg={3}>
+                    <MDBox mb={1.5}>
+                      <ComplexStatisticsCard
+                        color="dark"
+                        icon="weekend"
+                        title="Offres"
+                        count={281}
+                        percentage={{
+                          color: "success",
+                          
+                        }}
+                      />
+                    </MDBox>
+                  </Grid>
+
+                  <Grid item xs={12} md={6} lg={3}>
+                    <MDBox mb={1.5}>
+                      <ComplexStatisticsCard
+                        color="success"
+                        icon="weekend"
+                        title="Stocks"
+                        count={281}
+                        percentage={{
+                          color: "success",
+                          
+                        }}
+                      />
+                    </MDBox>
+                  </Grid>
+
+
+
+                  <Grid item xs={12} md={6} lg={3}>
+                    <MDBox mb={1.5}>
+                      <ComplexStatisticsCard
+                        icon="leaderboard"
+                        title="Commandes"
+                        count="2,300"
+                        percentage={{
+                          color: "success",
+                        
+                        }}
+                      />
+                    </MDBox>
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={3}>
+                    <MDBox mb={1.5}>
+                      <ComplexStatisticsCard
+                        color="success"
+                        icon="store"
+                        title="Fournisseurs"
+                        count="34k"
+                        percentage={{
+                          color: "success",
+                        
+                        }}
+                      />
+                    </MDBox>
+                  </Grid>
+                </Grid>
+              </div>
+
+              <h2 className="zr">Démande des Cotations Recents</h2>
+              <div className="ligne"></div>
+
+              <div className="se">
+                  <MDBox mt={4.5}>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} md={6} lg={4}>
+                      <MDBox mb={3}>
+                            <DefaultInfoCard
+                                icon="account_balance"
+                                title="TFM"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
+                      </MDBox>
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={4}>
+                      <MDBox mb={3}>
+                      <DefaultInfoCard
+                                icon="account_balance"
+                                title="KAMOA"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
+                      </MDBox>
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={4}>
+                      <MDBox mb={3}>
+                      <DefaultInfoCard
+                                icon="account_balance"
+                                title="Rwashi_Mining"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
+                      </MDBox>
+                    </Grid>
+                  </Grid>
+                </MDBox>
+              </div>
+              <div className="se">
+                  <MDBox mt={4.5}>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} md={6} lg={4}>
+                      <MDBox mb={3}>
+                            <DefaultInfoCard
+                                icon="account_balance"
+                                title="CHEMAF"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
+                      </MDBox>
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={4}>
+                      <MDBox mb={3}>
+                      <DefaultInfoCard
+                                icon="account_balance"
+                                title="KICCO MINING"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
+                      </MDBox>
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={4}>
+                      <MDBox mb={3}>
+                      <DefaultInfoCard
+                                icon="account_balance"
+                                title="KIBALI COLD"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
+                      </MDBox>
+                    </Grid>
+                  </Grid>
+                </MDBox>
+              </div>
+              
+              
+              <MDBox>
+              
               </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsLineChart
-                  color="success"
-                  title="daily sales"
-                  description={
-                    <>
-                      (<strong>+15%</strong>) increase in today sales.
-                    </>
-                  }
-                  date="updated 4 min ago"
-                  chart={sales}
-                />
-              </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsLineChart
-                  color="dark"
-                  title="completed tasks"
-                  description="Last Campaign Performance"
-                  date="just updated"
-                  chart={tasks}
-                />
-              </MDBox>
-            </Grid>
-          </Grid>
-        </MDBox>
-        <MDBox>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={8}>
-              <Projects />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
-            </Grid>
-          </Grid>
-        </MDBox>
-      </MDBox>
-      <Footer />
+            </MDBox>
+
+
+      </div>
     </DashboardLayout>
   );
 }

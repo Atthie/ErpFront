@@ -13,16 +13,20 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-import routes from "../../routes/routesEm";
+import routes from "../../routes/routesVendeur";
 import Sidenav from "examples/Sidenav";
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
+import Popup from "layouts/Popup/Popup";
+import "../../App.css"
 
 
 
 
-function Offre() {
+function Stocks() {
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
@@ -81,8 +85,10 @@ function Offre() {
         onMouseLeave={handleOnMouseLeave}
       />
       <DashboardNavbar />
-      <MDBox py={3}>
-                <MDTypography variant="h3">Offres</MDTypography>
+
+      <Popup/>
+      <MDBox ClassName="tt" py={3}>
+                <MDTypography variant="h3">Gestion de Stocks</MDTypography>
 
         </MDBox>
       <DataTable py={9}
@@ -100,7 +106,22 @@ function Offre() {
         reference: "DMO01",
         vendeur: "Baorixile",
         etat: "En Attente",
-        action: <MDButton variant="gradient" color="info" size="small">Valider</MDButton>,
+        action:  (
+          <div className="vn">
+            <div>
+              <MDButton variant="gradient" color="info" size="small">
+                <EditIcon />
+              </MDButton>
+            </div>
+            
+            <div className="ii">
+              <MDButton variant="gradient" color="info" size="small">
+                <DeleteIcon />
+              </MDButton>
+            </div>
+            
+          </div>
+        ),
         startDate: "4/11/2021",
       },
           ]
@@ -110,4 +131,4 @@ function Offre() {
   );
 }
 
-export default Offre;
+export default Stocks;

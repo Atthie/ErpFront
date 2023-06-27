@@ -1,3 +1,103 @@
+
+.cont{
+  margin-top: 20px;
+}
+
+.vn{
+  display: flex;
+ 
+}
+
+.ii{
+  margin-left: 10px;
+}
+
+
+.tt{
+  margin-top: -90px;
+}
+
+.lod{
+  width: 90px;
+  height: 90px;
+}
+
+.pour{
+  margin-top: -55px;
+}
+
+.cont-statPod{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.for1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 150px;
+  background-color: white;
+  border-radius: 20px 20px 20px;
+  box-shadow: 1px  rgb(133, 131, 131);
+}
+
+.se{
+  margin-top: -40Px;
+}
+
+.zr{
+  margin-top: 50px;
+}
+
+.vb{
+  border: 1px solid black;
+}
+
+.ligne{
+    width: 200px;
+    height: 5px;
+    background-color: blue;
+}
+
+
+.vl{
+  display: flex;
+  flex-direction: column;
+}
+
+.tab{
+  margin-top: 10px;
+}
+
+.tab1{
+  margin-top: 80px;
+}
+
+.BtnAjt{
+  margin-top: 60px;
+  margin-left: 1400px;
+}
+
+.BtnAjt1{
+  margin-top: -6px;
+  margin-left: 1400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .App {
   text-align: center;
 }
