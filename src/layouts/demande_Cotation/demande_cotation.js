@@ -14,6 +14,9 @@ import DataTable from "examples/Tables/DataTable";
 import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import routes from "../../routes/routesEm";
 import Sidenav from "examples/Sidenav";
 import brandWhite from "assets/images/logo-ct.png";
@@ -40,8 +43,6 @@ function Demande_Cotation() {
     const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
     const [onMouseEnter, setOnMouseEnter] = useState(true);
-    const { pathname } = useLocation();
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
     const {
       miniSidenav,
       layout,
@@ -65,8 +66,6 @@ function Demande_Cotation() {
         setOnMouseEnter(false);
       }
     };
-  const { columns, rows } = authorsTableData();
-  const { columns: pColumns, rows: pRows } = projectsTableData();
   const [cotations, setCotations] = useState([]);
   useEffect(() => {
     const fetchCotations = async () => {
@@ -80,6 +79,32 @@ function Demande_Cotation() {
 
     fetchCotations();
   }, []);
+
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Êtes-vous sûr de vouloir supprimer cette demande de cotation ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, supprimer',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5000/deleteDemandeCotation/${id}`)
+          .then((response) => {
+            Swal.fire('Suppression réussie', 'La demande de cotation a été supprimée.', 'success');
+            setCotations(cotations.filter((cotation) => cotation.id !== id));
+          })
+          .catch((error) => {
+            console.error('Une erreur est survenue lors de la suppression de la demande de cotation :', error);
+            Swal.fire('Erreur', 'Une erreur est survenue lors de la suppression de la demande de cotation.', 'error');
+          });
+      }
+    });
+  };
+  
+
+
 
 
 
@@ -111,8 +136,26 @@ function Demande_Cotation() {
       description: cotation.description,
       date_limite: cotation.dateFin,
       etat: cotation.etat,
-      action: cotation.etat !== 'publié' ? <MDButton variant="gradient" color="info" size="small">Modifier</MDButton> : null,
-    }))
+      action: (
+        <>
+          {cotation.etat !== 'publié' && (
+            <>
+              <MDButton variant="gradient" color="info" size="small">
+                <EditIcon fontSize={"large"} />
+              </MDButton>
+              <span style={{ marginRight: '10px' }}></span>
+              <MDButton
+                  variant="gradient"
+                  color="error"
+                  size="small"
+                  onClick={() => handleDelete(cotation.id)}
+                >
+                <DeleteIcon />
+              </MDButton>
+            </>
+          )}
+        </>
+      )    }))
   }}
 />
     </DashboardLayout>
