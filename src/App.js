@@ -23,6 +23,7 @@ import Production from "layouts/production/production";
 import Vendeur from "layouts/vendeur"
 import Commandes_Entreprise_Miniere from "layouts/commandes/entreprise_Miniere";
 import Stocks from "layouts/stocks/stocks";
+import Cotation from "layouts/cotation/cotation";
 
 import Offre from "layouts/offre/offres"
 import Demande_Cotation from "layouts/demande_Cotation/demande_cotation";
@@ -59,6 +60,7 @@ export default function App() {
                 <Route path="/stocks" element={<Stocks/>} />
                 <Route path="/production" element={<Production/>} />
                 <Route path="/demande_cotation" element={<Demande_Cotation/>} />
+                <Route path="/cotation" element={<Cotation/>} />
 
               </Routes>
             

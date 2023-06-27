@@ -10,6 +10,7 @@ import SignUp from "layouts/authentication/sign-up";
 import Icon from "@mui/material/Icon";
 import Stocks from "layouts/stocks/stocks";
 import Production from "layouts/production/production";
+import Cotation from "layouts/cotation/cotation";
 
 const routesVendeur = [
   {
@@ -38,6 +39,16 @@ const routesVendeur = [
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/production",
     component: <Production/>,
+    role: "vendeurs"
+  },
+
+  {
+    type: "collapse",
+    name: "Cotation",
+    key: "tables",
+    icon: <Icon fontSize="small">table_view</Icon>,
+    route: "/cotation",
+    component: <Cotation/>,
     role: "vendeurs"
   },
   
