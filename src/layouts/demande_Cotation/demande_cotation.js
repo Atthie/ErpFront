@@ -22,7 +22,7 @@ import Sidenav from "examples/Sidenav";
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 
-
+import Swal from "sweetalert2";
 
 
 function Demande_Cotation() {
