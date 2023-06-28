@@ -200,7 +200,7 @@ function Dashboard_Vendeur() {
                   <Grid container spacing={3}>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <div class="card">
+                      <div class="card1">
                         <div class="content">
                           <div class="title"><img/></div>
                           <div class="price">Rwashi</div>
@@ -217,7 +217,7 @@ function Dashboard_Vendeur() {
                     </Grid>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <div class="card">
+                      <div class="card1">
                         <div class="content">
                           <div class="title"><img/></div>
                           <div class="price">KICCO</div>
@@ -231,7 +231,7 @@ function Dashboard_Vendeur() {
                     </Grid>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <div class="card">
+                      <div class="card1">
                         <div class="content">
                           <div class="title"><img/></div>
                           <div class="price">KIBALI GOLD</div>

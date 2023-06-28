@@ -19,6 +19,8 @@ import Grid from "@mui/material/Grid";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
+import Popup2 from "layouts/Popup2/Popup2";
+import ReportsChart from "layouts/state/state";
 
 // Data
 import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData";
@@ -128,8 +130,8 @@ function Dashboard_Admin() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="dark"
-                        icon="receipt_long"
-                        title="Offres"
+                        icon="shopping_bag"
+                        title="Articles"
                         count={281}
                         percentage={{
                           color: "success",
@@ -143,8 +145,8 @@ function Dashboard_Admin() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="primary"
-                        icon="shopping_bag"
-                        title="Stocks"
+                        icon="groups_2"
+                        title="Vendeurs"
                         count={281}
                         percentage={{
                           color: "success",
@@ -159,8 +161,8 @@ function Dashboard_Admin() {
                   <Grid item xs={12} md={6} lg={3}>
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
-                        icon="shopping_cart"
-                        title="Commandes"
+                        icon="business"
+                        title="Emtreprises"
                         count="2,300"
                         percentage={{
                           color: "Primary",
@@ -173,8 +175,8 @@ function Dashboard_Admin() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="success"
-                        icon="groups_2"
-                        title="Clients"
+                        icon="attribution"
+                        title="Gestion des Utilisateurs"
                         count="34k"
                         percentage={{
                           color: "success",
@@ -185,54 +187,12 @@ function Dashboard_Admin() {
                   </Grid>
                 </Grid>
               </div>
+              <ReportsChart/>
+              
 
-              <h2 className="zr">Démande des Cotations Recents</h2>
-              <div className="ligne"></div>
+             
 
-              <div className="se">
-                  <MDBox mt={4.5}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                            <DefaultInfoCard
-                                icon="account_balance"
-                                title="TFM"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
-                      </MDBox>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                      <DefaultInfoCard
-                                icon="account_balance"
-                                title="KAMOA"
-                                description="Belong Interactive"
-                                value="+$2000"
-                                
-                                
-                          />
-                      </MDBox>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                      <DefaultInfoCard
-                                icon="account_balance"
-                                title="Rwashi_Mining"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
-                      </MDBox>
-                    </Grid>
-                  </Grid>
-                </MDBox>
-              </div>
-              <div className="se">
-                  <MDBox mt={4.5}>
-                  <Grid container spacing={3}>
-                  </Grid>
-                </MDBox>
-              </div>
+              
               
               
               <MDBox>

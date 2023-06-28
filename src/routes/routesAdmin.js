@@ -27,7 +27,7 @@ const routes = [
     type: "collapse",
     name: "Articles",
     key: "sign-in",
-    icon: <Icon fontSize="small">assignment</Icon>,
+    icon: <Icon fontSize="small">shopping_bag</Icon>,
     route: "/articles",
     component: <Article/>,
     role: "Admin"
@@ -38,7 +38,7 @@ const routes = [
     type: "collapse",
     name: "Vendeurs",
     key: "sign-in",
-    icon: <Icon fontSize="small">assignment</Icon>,
+    icon: <Icon fontSize="small">groups_2</Icon>,
     route: "/clients_vend",
     component: <Clients_Vend/>,
     role: "Admin"
@@ -49,7 +49,7 @@ const routes = [
     type: "collapse",
     name: "Emtreprises",
     key: "sign-in",
-    icon: <Icon fontSize="small">assignment</Icon>,
+    icon: <Icon fontSize="small">business</Icon>,
     route: "/mining",
     component: <Mining/>,
     role: "Admin"
@@ -59,7 +59,7 @@ const routes = [
     type: "collapse",
     name: "Gestion des Utilisateurs",
     key: "sign-in",
-    icon: <Icon fontSize="small">assignment</Icon>,
+    icon: <Icon fontSize="small">attribution</Icon>,
     route: "/users",
     component: <Users/>,
     role: "Admin"
