@@ -9,7 +9,7 @@ import MDBox from "components/MDBox";
 
 import Sidenav from "examples/Sidenav";
 
-import routes from "../../routes/routesVendeur";
+import routes from "../../routes/routesAdmin";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 
 import brandWhite from "assets/images/logo-ct.png";
@@ -18,24 +18,18 @@ import Grid from "@mui/material/Grid";
 
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
-import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Data
-import reportsBarChartData from "layouts/dashboard_EM/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData";
 
-// Dashboard components
-import Projects from "layouts/dashboard_EM/components/Projects";
-import OrdersOverview from "layouts/dashboard_EM/components/OrdersOverview";
+
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
-import Popup2 from "layouts/Popup2/Popup2";
+
 
 import "../../App.css"
 
-function Dashboard_Vendeur() {
+function Dashboard_Admin() {
   const { sales, tasks } = reportsLineChartData;
   const [controller, dispatch] = useMaterialUIController();
 
@@ -200,54 +194,45 @@ function Dashboard_Vendeur() {
                   <Grid container spacing={3}>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <div class="card">
-                        <div class="content">
-                          <div class="title"><img/></div>
-                          <div class="price">Rwashi</div>
-                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-                        </div>
-
-                          <Popup2/>
-                          {/* <button className="vp">
-                            Buy now
-                          </button> */}
-                      </div>
-                              
+                            <DefaultInfoCard
+                                icon="account_balance"
+                                title="TFM"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
                       </MDBox>
                     </Grid>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <div class="card">
-                        <div class="content">
-                          <div class="title"><img/></div>
-                          <div class="price">KICCO</div>
-                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-                        </div>
-
-                          <Popup2/>
-                         
-                      </div>
+                      <DefaultInfoCard
+                                icon="account_balance"
+                                title="KAMOA"
+                                description="Belong Interactive"
+                                value="+$2000"
+                                
+                                
+                          />
                       </MDBox>
                     </Grid>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <div class="card">
-                        <div class="content">
-                          <div class="title"><img/></div>
-                          <div class="price">KIBALI GOLD</div>
-                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-                        </div>
-
-                          <Popup2/>
-                         
-                      </div>
+                      <DefaultInfoCard
+                                icon="account_balance"
+                                title="Rwashi_Mining"
+                                description="Belong Interactive"
+                                value="+$2000"
+                          />
                       </MDBox>
                     </Grid>
-                    
                   </Grid>
                 </MDBox>
               </div>
-              
+              <div className="se">
+                  <MDBox mt={4.5}>
+                  <Grid container spacing={3}>
+                  </Grid>
+                </MDBox>
+              </div>
               
               
               <MDBox>
@@ -261,4 +246,4 @@ function Dashboard_Vendeur() {
   );
 }
 
-export default Dashboard_Vendeur;
+export default Dashboard_Admin;

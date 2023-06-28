@@ -4,23 +4,25 @@ import MDButton from "components/MDButton"
 import Icon from "@mui/material/Icon";
 
 
-
-function Popup2 (){
+function AjouterVend (){
        const showAlert = ()=>{
               Swal.fire({
-                     title: 'Demande de Cotation',
+                     title: 'Nouvau Vendeur',
                  
                      inputAttributes: {
-                       autocapitalize: 'Terminer'
+                       autocapitalize: 'Annuler'
                      },
                    
                      showCancelButton: true,
-                     confirmButtonText: 'Repondre',
+                     confirmButtonText: 'Confirmer',
                      showLoaderOnConfirm: true,
                     
                      html:
-                     ''
-                    ,
+                     '<input id="input1" class="swal2-input" placeholder="Nom_Vendeurs">' +
+                     '<input id="input2" type="text" class="swal2-input" placeholder="Description">'
+                     + '<input type="email" id="input3" class="swal2-input" placeholder="Email">' + 
+                     '<input type="password" id="input3" class="swal2-input" placeholder="Mot de passe">' + 
+                     '<input type="" id="input3" class="swal2-input" placeholder="Logo">',
 
                      preConfirm: () => {
                             const input1Value = document.getElementById('input1').value;
@@ -58,11 +60,12 @@ function Popup2 (){
        }
        return(
 
-         
-        
-          <button onClick={showAlert} className="vp">Voir Plus</button> 
 
-      
+              <div className="BtnAjt"> <MDButton  onClick={showAlert} variant="gradient" color="dark">
+                     <Icon sx={{ fontWeight: "bold" }}>add</Icon>
+                     &nbsp;Nouvau Vendeur
+                     </MDButton>
+              </div>
               
               
               
@@ -72,4 +75,4 @@ function Popup2 (){
 
 
        )
-} export default Popup2
+} export default AjouterVend
