@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useContext} from "react";
+import { useState, useEffect, useContext, } from "react";
 
 
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
@@ -28,8 +28,10 @@ import axios from "axios"
 import DefaultProjectCard from "examples/Cards/ProjectCards/DefaultProjectCard";
 
 import Header from "layouts/articles/components/Header";
+import { useNavigate } from 'react-router-dom';
 
 function Article_Cotation() {
+  const navigate = useNavigate();
 
   const { id } = useParams();
   const [controller, dispatch] = useMaterialUIController();
@@ -37,8 +39,6 @@ function Article_Cotation() {
   const { pathname } = useLocation();
   const {
     miniSidenav,
-    layout,
-    openConfigurator,
     sidenavColor,
     transparentSidenav,
     whiteSidenav,
@@ -148,47 +148,33 @@ function Article_Cotation() {
     }
   };
 
-  const generatePreview = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/getbyiddemandeCotation/${id}`);
-      if (!response.ok) {
-        throw new Error('Erreur lors de la récupération de la demande de cotation');
-      }
-      const demandeCotation = await response.json();
-      console.log(response)
-      const doc = new jsPDF();
-      doc.text('Mon aperçu PDF', 10, 10);
-  
-      doc.text(`ID: ${demandeCotation.id}`, 10, 20);
-      doc.text(`Description: ${demandeCotation.description}`, 10, 30);
-      doc.text(`État: ${demandeCotation.etat}`, 10, 40);
-  
-      const previewBase64 = doc.output('datauristring');
-  
-      Swal.fire({
-        title: 'Aperçu PDF',
-        imageUrl: previewBase64,
-        imageAlt: 'Aperçu PDF',
-        html: `
-          <div>
-            <p>ID: ${demandeCotation.id}</p>
-            <p>Description: ${demandeCotation.description}</p>
-            <p>État: ${demandeCotation.etat}</p>
-            <!-- Ajoutez d'autres informations ici -->
-          </div>
-        `,
-        showConfirmButton: true,
-        confirmButtonText: 'Télécharger PDF',
-        showCancelButton: true,
-        cancelButtonText: 'Fermer',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          doc.save('preview.pdf');
+  const terminer = () => {
+    
+    Swal.fire({
+      title: 'Que voulez-vous faire de cette offre?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Publier',
+      denyButtonText: `Brouillon`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.put(`http://localhost:5000/publier/${id}`)
+        .then(response => {
+          Swal.fire('Offre publiée!', '', 'success');
+          navigate(`/demande_cotation`);
+        })
+        .catch(error => {
+          console.log(error);
+          Swal.fire('Erreur lors de la publication de l\'offre', '', 'error');
+        });
+        
+      } else if (result.isDenied) {
+        
+            Swal.fire('Brouillon enregistré!', '', 'success');
+            navigate(`/demande_cotation`);
+     
         }
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    });
   };
   
   
@@ -222,9 +208,9 @@ function Article_Cotation() {
             variant="gradient"
             color="info"
             size="large"
-            onClick={generatePreview}
+            onClick={terminer}
           >
-            Aperçu
+           Terminer
           </MDButton>
           </MDBox>
         </MDBox>

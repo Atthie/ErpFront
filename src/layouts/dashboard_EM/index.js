@@ -126,10 +126,8 @@ function Dashboard_EM() {
 const handleDescriptionChange = (event) => {
   setDescriptionValue(event.target.value);
 };
-  const [ajoutArticleVisible, setAjoutArticleVisible] = useState(false);
   const navigate = useNavigate();
   const ajouterArticle = () => {
-    // Créez un objet avec les données des champs
     const data = {
       dateFin: selectedDate,
       description: descriptionValue,
