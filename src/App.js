@@ -35,6 +35,7 @@ import Parametre from "layouts/parametre/parametre";
 import Articles from "layouts/articles/articles";
 import Mining from "layouts/mining/mining";
 import Users from "layouts/users/users";
+import InscriptionCli from "layouts/authentication/components/InscriptionClient";
 
 import Offre from "layouts/offre/offres"
 import Demande_Cotation from "layouts/demande_Cotation/demande_cotation";
@@ -87,6 +88,8 @@ export default function App() {
                 <Route path="/articles" element={<Articles/>} />
                 <Route path="/users" element={<Users/>} />
                 <Route path="/details" element={<Details/>} />
+                <Route path="/inscriptionCli" element={<InscriptionCli/>} />
+
 
 
                 <Route path="/article_cotation/:id" element={<Article_Cotation/>} />

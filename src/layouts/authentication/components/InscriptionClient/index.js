@@ -15,9 +15,8 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
-import { NavLink } from "react-bootstrap";
 
-function Cover() {
+function InscriptionCli() {
   return (
     <CoverLayout>
       <Card>
@@ -40,27 +39,28 @@ function Cover() {
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
             <MDBox mb={2}>
-              <MDInput type="text" label="Nom_Emtreprise" variant="standard" fullWidth />
+              <MDInput type="text" label="Nom" variant="standard" fullWidth />
             </MDBox>
-            
-            <MDBox mb={2}>
-              <MDInput type="text" label="Description" variant="standard" fullWidth />
-            </MDBox>
+
             <MDBox mb={2}>
               <MDInput type="email" label="Email" variant="standard" fullWidth />
             </MDBox>
-           
+            
             <MDBox mb={2}>
-              <MDInput type="file" label="Logo" variant="standard" fullWidth />
+              <MDInput type="number" label="Telephone" variant="standard" fullWidth />
+            </MDBox>
+            
+            <MDBox mb={2}>
+              <MDInput type="password" label="Mot de Passe" variant="standard" fullWidth />
+            </MDBox>
+            <MDBox mb={2}>
+              <MDInput type="password" label=" Confirmation Mot de Passe" variant="standard" fullWidth />
             </MDBox>
             <MDBox mt={4} mb={1}>
               <MDButton variant="gradient" color="info" fullWidth>
                 S'Inscrirer
               </MDButton>
             </MDBox>
-            
-               <NavLink to="/inscriptionCli" href="/inscriptionCli">Je suis un Particulier</NavLink>
-            
             <MDBox mt={3} mb={1} textAlign="center">
               <MDTypography variant="button" color="text">
                 Je un Compte{" "}
@@ -83,4 +83,4 @@ function Cover() {
   );
 }
 
-export default Cover;
+export default InscriptionCli;
