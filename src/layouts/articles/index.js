@@ -31,7 +31,7 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
  
 import axios from "axios"
 import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData";
-import { useNavigate } from 'react-router-dom';
+
 
 function Dashboard_EM() {
   const { sales, tasks } = reportsLineChartData;
@@ -125,7 +125,7 @@ const handleDescriptionChange = (event) => {
   setDescriptionValue(event.target.value);
 };
   const [ajoutArticleVisible, setAjoutArticleVisible] = useState(false);
-  const navigate = useNavigate();
+
   const ajouterArticle = () => {
     // Créez un objet avec les données des champs
     const data = {
@@ -141,8 +141,9 @@ const handleDescriptionChange = (event) => {
   
         axios.get(`http://localhost:5000/getlastdemandeCotation/${nouvelArticleId}`)
           .then(response => {
-            const nouvelDM = response.data; // Récupérez l'élément de l'article créé
-            navigate(`/article_cotation/${nouvelDM.id}`);
+            const nouvelArticle = response.data; // Récupérez l'élément de l'article créé
+  
+            window.location.href = `/articles/${nouvelArticle.id}`;
           })
           .catch(error => {
             console.error(error);
@@ -176,8 +177,6 @@ const handleDescriptionChange = (event) => {
         axios.post("http://localhost:5000/demandeCotation", data)
           .then(response => {
             Swal.fire('Offre publiée!', '', 'success');
-            navigate(`/demande_cotation`);
-
           })
           .catch(error => {
             console.error(error);
@@ -194,8 +193,6 @@ const handleDescriptionChange = (event) => {
         axios.post("http://localhost:5000/demandeCotation", data)
           .then(response => {
             Swal.fire('Brouillon enregistré!', '', 'success');
-            navigate(`/demande_cotation`);
-
           })
           .catch(error => {
             console.error(error);

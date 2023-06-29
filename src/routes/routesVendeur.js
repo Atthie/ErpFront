@@ -1,10 +1,5 @@
 
 import Dashboard_Vendeur from "layouts/dashboard_EM";
-import Tables from "layouts/tables";
-import Billing from "layouts/billing";
-import Profile from "layouts/profile";
-import SignIn from "layouts/authentication/sign-in";
-import SignUp from "layouts/authentication/sign-up";
 
 // @mui icons
 import Icon from "@mui/material/Icon";

@@ -1,10 +1,5 @@
 
 import Dashboard from "layouts/dashboard_EM";
-import Tables from "layouts/tables";
-import Billing from "layouts/billing";
-import Profile from "layouts/profile";
-import SignIn from "layouts/authentication/sign-in";
-import SignUp from "layouts/authentication/sign-up";
 import Commandes from "layouts/commandes/entreprise_Miniere";
 import Vendeur from "layouts/vendeur"
 import Demande_Cotation from "layouts/demande_Cotation/demande_cotation";
