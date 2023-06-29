@@ -59,72 +59,68 @@ const navigate= useNavigate()
 
   return (
     
-    <CoverLayout image={bgImage} >
-      <Card>
-        <MDBox
-          variant="gradient"
-          bgColor="info"
-          borderRadius="lg"
-          coloredShadow="info"
-          mx={2}
-          mt={-3}
-          p={2}
-          mb={1}
-          textAlign="center"
-        >
-          <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Sign in
-          </MDTypography>
-         
-        </MDBox>
-        <MDBox pt={4} pb={3} px={3}>
-          <MDBox component="form" role="form">
-            <MDBox mb={2}>
-            <MDInput type="text" name="username" label="Username" fullWidth value={username} onChange={handleUsernameChange}/>            </MDBox>
-            <MDBox mb={2}>
-            <MDInput type="password" name="pwd" label="Password" fullWidth value={pwd} onChange={handlePasswordChange}/>
-            </MDBox>
-            <MDBox display="flex" alignItems="center" ml={-1}>
-              <Switch checked={rememberMe} onChange={handleSetRememberMe} />
-              <MDTypography
-                variant="button"
-                fontWeight="regular"
-                color="text"
-                onClick={handleSetRememberMe}
-                sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
-              >
-                &nbsp;&nbsp;Remember me
-              </MDTypography>
-            </MDBox>
-            <MDBox mt={4} mb={1}>
-              <MDButton 
-                variant="gradient" 
-                color="info" 
-                fullWidth
-                onClick={signIn}
-                >
-                sign in
-              </MDButton>
-            </MDBox>
-            <MDBox mt={3} mb={1} textAlign="center">
-              <MDTypography variant="button" color="text">
-                Don&apos;t have an account?{" "}
-                <MDTypography
-                  component={Link}
-                  to="/inscription"
-                  variant="button"
-                  color="info"
-                  fontWeight="medium"
-                  textGradient
-                >
-                  Sign up
-                </MDTypography>
-              </MDTypography>
-            </MDBox>
-          </MDBox>
-        </MDBox>
-      </Card>
-    </CoverLayout>
+
+    <div>
+            <div>
+                  <CoverLayout  >
+                  <Card>
+                    <MDBox
+                      variant="gradient"
+                      bgColor="info"
+                      borderRadius="lg"
+                      coloredShadow="info"
+                      mx={2}
+                      mt={-3}
+                      p={2}
+                      mb={1}
+                      textAlign="center"
+                    >
+                      <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                        Se Connecter
+                      </MDTypography>
+                    
+                    </MDBox>
+                    <MDBox pt={4} pb={3} px={3}>
+                      <MDBox component="form" role="form">
+                        <MDBox mb={2}>
+                        <MDInput type="text" name="username" label="Email" fullWidth value={username} onChange={handleUsernameChange}/>            </MDBox>
+                        <MDBox mb={2}>
+                        <MDInput type="password" name="pwd" label="Mot de Passe" fullWidth value={pwd} onChange={handlePasswordChange}/>
+                        </MDBox>
+                       
+                        <MDBox mt={4} mb={1}>
+                          <MDButton 
+                            variant="gradient" 
+                            color="info" 
+                            fullWidth
+                            onClick={signIn}
+                            >
+                            Connexion
+                          </MDButton>
+                        </MDBox>
+                        <MDBox mt={3} mb={1} textAlign="center">
+                          <MDTypography variant="button" color="text">
+                            Vous n'avez pas de Compte?{" "}
+                            <MDTypography
+                              component={Link}
+                              to="/inscription"
+                              variant="button"
+                              color="info"
+                              fontWeight="medium"
+                              textGradient
+                            >
+                              S'Inscrirer
+                            </MDTypography>
+                          </MDTypography>
+                        </MDBox>
+                      </MDBox>
+                    </MDBox>
+                  </Card>
+                </CoverLayout>
+          </div>
+    </div>
+    
+    
     
   );
 }

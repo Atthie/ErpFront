@@ -4,6 +4,29 @@
   width: 500px;
 }
 
+.longConf{
+  display: flex;
+  flex-direction: row ;
+
+  width: 200px;
+}
+
+.logoerp{
+  width: 800px;
+ 
+}
+
+
+.io{
+  background-color: #4154f1; 
+  height: 980px;
+  
+}
+
+.lk{
+  margin-left: -80px;
+}
+
 
 
 
