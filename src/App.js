@@ -38,6 +38,7 @@ import Users from "layouts/users/users";
 
 import Offre from "layouts/offre/offres"
 import Demande_Cotation from "layouts/demande_Cotation/demande_cotation";
+import Article_Cotation from "layouts/articles/articleCotation";
 export default function App() {
   const [controller] = useMaterialUIController();
   const {
@@ -88,10 +89,9 @@ export default function App() {
                 <Route path="/details" element={<Details/>} />
 
 
+                <Route path="/article_cotation/:id" element={<Article_Cotation/>} />
 
               </Routes>
-            
-            
           </ThemeProvider>
     </AppContext.Provider>
   );

@@ -33,6 +33,7 @@ import axios from "axios"
 import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData";
 import "../../App.css"
 
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard_EM() {
   const { sales, tasks } = reportsLineChartData;
@@ -125,7 +126,35 @@ function Dashboard_EM() {
 const handleDescriptionChange = (event) => {
   setDescriptionValue(event.target.value);
 };
-  const [ajoutArticleVisible, setAjoutArticleVisible] = useState(false);
+  const navigate = useNavigate();
+  const ajouterArticle = () => {
+    const data = {
+      dateFin: selectedDate,
+      description: descriptionValue,
+      userId: idUser,
+      etat: "Brouillon"
+    };
+  
+    axios.post("http://localhost:5000/demandeCotation", data)
+      .then(response => {
+        const nouvelArticleId = response.data.id; // Récupérez l'ID de l'article créé depuis la réponse de l'API
+  
+        axios.get(`http://localhost:5000/getlastdemandeCotation/${nouvelArticleId}`)
+          .then(response => {
+            const nouvelDM = response.data; // Récupérez l'élément de l'article créé
+            navigate(`/article_cotation/${nouvelDM.id}`);
+          })
+          .catch(error => {
+            console.error(error);
+            alert("Une erreur s'est produite lors de la récupération de l'article.");
+          });
+      })
+      .catch(error => {
+        console.error(error);
+        alert("Une erreur s'est produite lors de l'ajout de l'article.");
+      });
+  };
+  
 
   const terminer = () => {
     
@@ -147,6 +176,8 @@ const handleDescriptionChange = (event) => {
         axios.post("http://localhost:5000/demandeCotation", data)
           .then(response => {
             Swal.fire('Offre publiée!', '', 'success');
+            navigate(`/demande_cotation`);
+
           })
           .catch(error => {
             console.error(error);
@@ -163,6 +194,8 @@ const handleDescriptionChange = (event) => {
         axios.post("http://localhost:5000/demandeCotation", data)
           .then(response => {
             Swal.fire('Brouillon enregistré!', '', 'success');
+            navigate(`/demande_cotation`);
+
           })
           .catch(error => {
             console.error(error);
@@ -282,6 +315,7 @@ const handleDescriptionChange = (event) => {
               variant="gradient"
               color="info"
               size="large"
+              onClick={ajouterArticle}
             >
               + Article
             </MDButton>
