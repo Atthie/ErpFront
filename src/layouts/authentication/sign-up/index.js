@@ -58,8 +58,13 @@ function Cover() {
                 S'Inscrirer
               </MDButton>
             </MDBox>
+
+            <div className="nb">
+              <img className="useOK" src="user.png"/>
+              <NavLink className="insc" to="/inscriptionCli" href="/inscriptionCli">Je suis un Particulier</NavLink>
+            </div>
             
-               <NavLink to="/inscriptionCli" href="/inscriptionCli">Je suis un Particulier</NavLink>
+               
             
             <MDBox mt={3} mb={1} textAlign="center">
               <MDTypography variant="button" color="text">
