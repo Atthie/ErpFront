@@ -1,14 +1,42 @@
 
 
+.graph{
+  width: 500px;
+}
 
 
 
+
+.lm{
+  display: flex;
+  margin-top: 70px;
+  margin-left: 30px;
+}
 
 
 .col-12, .Card{
   background-color: white;
   margin-top: 60px;
   height: 450px; 
+}
+
+.logoVend{
+  width: 200px;
+}
+
+.bx{
+  display: flex;
+  gap: 40px;
+}
+
+.WX{
+  margin-top: 20px;
+}
+
+.vnCont{
+  display: flex;
+  background-color: white;
+  margin-top: 90px;
 }
 
 

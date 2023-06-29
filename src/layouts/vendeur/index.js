@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, NavLink } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
@@ -81,7 +81,7 @@ function Offre() {
       />
       <DashboardNavbar />
       <MDBox py={3}>
-                <MDTypography variant="h3">Offres</MDTypography>
+                <MDTypography variant="h3">Vendeur</MDTypography>
 
         </MDBox>
       <DataTable py={9}
@@ -98,7 +98,7 @@ function Offre() {
         nom: "Jambon",
         telephone: "0987766",
         adresse_mail: "jammbo@gmail.com",
-        action: <MDButton variant="gradient" color="info" size="small"> <RemoveRedEyeIcon fontSize="large"/></MDButton>,
+        action: <MDButton  variant="gradient" color="info" size="small"> <NavLink to="/details"><RemoveRedEyeIcon  fontSize="large"/></NavLink></MDButton>,
       },
           ]
   }}

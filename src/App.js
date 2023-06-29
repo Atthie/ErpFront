@@ -21,6 +21,7 @@ import Dashboard_Vendeur from "layouts/dashboard_Vendeur";
 import Dashboard_Admin from "layouts/dashboard_Admin";
 import Production from "layouts/production/production";
 import Clients_Vend from "layouts/clients/clients";
+import Details from "layouts/details/details";
 
 import Vendeur from "layouts/vendeur"
 import Commandes_Entreprise_Miniere from "layouts/commandes/entreprise_Miniere";
@@ -84,6 +85,8 @@ export default function App() {
                 <Route path="/parametre" element={<Parametre/>} />
                 <Route path="/articles" element={<Articles/>} />
                 <Route path="/users" element={<Users/>} />
+                <Route path="/details" element={<Details/>} />
+
 
 
               </Routes>
