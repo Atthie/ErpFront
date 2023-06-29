@@ -11,6 +11,7 @@ import Demande_Cotation from "layouts/demande_Cotation/demande_cotation";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import Offre from "layouts/offre/offres";
+import Overview from "layouts/profile";
 
 const routes = [
   {
@@ -26,7 +27,7 @@ const routes = [
     type: "collapse",
     name: "Demande de Cotations",
     key: "sign-in",
-    icon: <Icon fontSize="small">login</Icon>,
+    icon: <Icon fontSize="small">assignment</Icon>,
     route: "/demande_cotation",
     component: <Demande_Cotation/>,
     role: "admin"
@@ -36,11 +37,13 @@ const routes = [
     type: "collapse",
     name: "Commandes",
     key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <Icon fontSize="small">shopping_cart</Icon>,
     route: "/commande_Em",
     component: <Commandes />,
     role: "vendeurs"
   },
+
+  
   {
     type: "collapse",
     name: "Offres",
@@ -55,13 +58,22 @@ const routes = [
     type: "collapse",
     name: "Vendeurs",
     key: "sign-in",
-    icon: <Icon fontSize="small">login</Icon>,
+    icon: <Icon fontSize="small">groups_2</Icon>,
     route: "/vendeur",
     component: <Vendeur />,
     role: "admin"
 
   },
   
+  {
+    type: "collapse",
+    name: "Parametres",
+    key: "tables",
+    icon: <Icon fontSize="small">settings</Icon>,
+    route: "/profile",
+    component: <Overview />,
+    role: "vendeurs"
+  },
  
 ];
 

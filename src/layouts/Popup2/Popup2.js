@@ -4,6 +4,7 @@ import MDButton from "components/MDButton"
 import Icon from "@mui/material/Icon";
 
 
+
 function Popup2 (){
        const showAlert = ()=>{
               Swal.fire({
@@ -57,8 +58,11 @@ function Popup2 (){
        }
        return(
 
+         
+        
+          <button onClick={showAlert} className="vp">Voir Plus</button> 
 
-        <MDButton  onClick={showAlert} variant="gradient" color="dark">Voir-Plus</MDButton>
+      
               
               
               

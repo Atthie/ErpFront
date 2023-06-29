@@ -40,15 +40,15 @@ function DefaultInfoCard({ color, icon, title, description, value }) {
           alignItems="center"
           bgColor={color}
           color="white"
-          // width="8rem"
-          // height="7rem"
+          width="8rem"
+          height="7rem"
           shadow="md"
           borderRadius="lg"
           variant="gradient"
           
           
         >
-          <Icon className="icon24" fontSize="default"><span class="material-icons">request_quote</span></Icon>
+          <Icon className="icon24" fontSize="default"><span class="material-icons"></span></Icon>
         </MDBox>
       </MDBox>
       <MDBox pb={2} px={2} textAlign="center" lineHeight={1.25}>
@@ -60,16 +60,16 @@ function DefaultInfoCard({ color, icon, title, description, value }) {
             {description}
           </MDTypography>
         )}
-        {description && !value ? null : <Divider />}
-        
-        
+       
         
       </MDBox>
-        <Popup2/>
-       
+      
+      <div className="pom" ><Popup2/></div>    
      
 
     </Card>
+
+    
   );
 }
 

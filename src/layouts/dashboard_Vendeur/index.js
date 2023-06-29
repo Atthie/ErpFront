@@ -31,6 +31,8 @@ import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData
 import Projects from "layouts/dashboard_EM/components/Projects";
 import OrdersOverview from "layouts/dashboard_EM/components/OrdersOverview";
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
+import Popup2 from "layouts/Popup2/Popup2";
+
 import "../../App.css"
 
 function Dashboard_Vendeur() {
@@ -132,7 +134,7 @@ function Dashboard_Vendeur() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="dark"
-                        icon="weekend"
+                        icon="receipt_long"
                         title="Offres"
                         count={281}
                         percentage={{
@@ -146,8 +148,8 @@ function Dashboard_Vendeur() {
                   <Grid item xs={12} md={6} lg={3}>
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
-                        color="success"
-                        icon="weekend"
+                        color="primary"
+                        icon="shopping_bag"
                         title="Stocks"
                         count={281}
                         percentage={{
@@ -163,11 +165,11 @@ function Dashboard_Vendeur() {
                   <Grid item xs={12} md={6} lg={3}>
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
-                        icon="leaderboard"
+                        icon="shopping_cart"
                         title="Commandes"
                         count="2,300"
                         percentage={{
-                          color: "success",
+                          color: "Primary",
                         
                         }}
                       />
@@ -177,8 +179,8 @@ function Dashboard_Vendeur() {
                     <MDBox mb={1.5}>
                       <ComplexStatisticsCard
                         color="success"
-                        icon="store"
-                        title="Fournisseurs"
+                        icon="groups_2"
+                        title="Clients"
                         count="34k"
                         percentage={{
                           color: "success",
@@ -198,73 +200,54 @@ function Dashboard_Vendeur() {
                   <Grid container spacing={3}>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                            <DefaultInfoCard
-                                icon="account_balance"
-                                title="TFM"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
+                      <div class="card1">
+                        <div class="content">
+                          <div class="title"><img/></div>
+                          <div class="price">Rwashi</div>
+                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
+                        </div>
+
+                          <Popup2/>
+                          {/* <button className="vp">
+                            Buy now
+                          </button> */}
+                      </div>
+                              
                       </MDBox>
                     </Grid>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <DefaultInfoCard
-                                icon="account_balance"
-                                title="KAMOA"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
+                      <div class="card1">
+                        <div class="content">
+                          <div class="title"><img/></div>
+                          <div class="price">KICCO</div>
+                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
+                        </div>
+
+                          <Popup2/>
+                         
+                      </div>
                       </MDBox>
                     </Grid>
                     <Grid item xs={12} md={6} lg={4}>
                       <MDBox mb={3}>
-                      <DefaultInfoCard
-                                icon="account_balance"
-                                title="Rwashi_Mining"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
+                      <div class="card1">
+                        <div class="content">
+                          <div class="title"><img/></div>
+                          <div class="price">KIBALI GOLD</div>
+                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
+                        </div>
+
+                          <Popup2/>
+                         
+                      </div>
                       </MDBox>
                     </Grid>
+                    
                   </Grid>
                 </MDBox>
               </div>
-              <div className="se">
-                  <MDBox mt={4.5}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                            <DefaultInfoCard
-                                icon="account_balance"
-                                title="CHEMAF"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
-                      </MDBox>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                      <DefaultInfoCard
-                                icon="account_balance"
-                                title="KICCO MINING"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
-                      </MDBox>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                      <DefaultInfoCard
-                                icon="account_balance"
-                                title="KIBALI COLD"
-                                description="Belong Interactive"
-                                value="+$2000"
-                          />
-                      </MDBox>
-                    </Grid>
-                  </Grid>
-                </MDBox>
-              </div>
+              
               
               
               <MDBox>

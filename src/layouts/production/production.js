@@ -82,7 +82,7 @@ function Production() {
       />
       <DashboardNavbar />
       <MDBox py={3}>
-                <MDTypography variant="h3">Offres</MDTypography>
+                <MDTypography variant="h3">Production</MDTypography>
 
         </MDBox>
       <DataTable py={9}
