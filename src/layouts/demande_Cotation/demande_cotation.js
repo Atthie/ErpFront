@@ -1,8 +1,6 @@
 import { useState, useEffect} from "react";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
 import axios from 'axios';
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
@@ -23,7 +21,7 @@ import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 import Swal from "sweetalert2";
 
-
+import Swal from "sweetalert2";
 
 
 function Demande_Cotation() {
@@ -91,7 +89,7 @@ function Demande_Cotation() {
       cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/deleteDemandeCotation/${id}`)
+        axios.delete(`http://localhost:5000/deleteDM/${id}`)
           .then((response) => {
             Swal.fire('Suppression réussie', 'La demande de cotation a été supprimée.', 'success');
             setCotations(cotations.filter((cotation) => cotation.id !== id));
