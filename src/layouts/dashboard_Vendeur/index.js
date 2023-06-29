@@ -27,11 +27,7 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 import reportsBarChartData from "layouts/dashboard_EM/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData";
 
-// Dashboard components
-import Projects from "layouts/dashboard_EM/components/Projects";
-import OrdersOverview from "layouts/dashboard_EM/components/OrdersOverview";
-import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
-import Popup2 from "layouts/Popup2/Popup2";
+import ReportsChartVend from "layouts/stateVen/stateVen";
 
 import "../../App.css"
 
@@ -192,61 +188,9 @@ function Dashboard_Vendeur() {
                 </Grid>
               </div>
 
-              <h2 className="zr">Démande des Cotations Recents</h2>
-              <div className="ligne"></div>
-
-              <div className="se">
-                  <MDBox mt={4.5}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                      <div class="card1">
-                        <div class="content">
-                          <div class="title"><img/></div>
-                          <div class="price">Rwashi</div>
-                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-                        </div>
-
-                          <Popup2/>
-                          {/* <button className="vp">
-                            Buy now
-                          </button> */}
-                      </div>
-                              
-                      </MDBox>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                      <div class="card1">
-                        <div class="content">
-                          <div class="title"><img/></div>
-                          <div class="price">KICCO</div>
-                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-                        </div>
-
-                          <Popup2/>
-                         
-                      </div>
-                      </MDBox>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <MDBox mb={3}>
-                      <div class="card1">
-                        <div class="content">
-                          <div class="title"><img/></div>
-                          <div class="price">KIBALI GOLD</div>
-                          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-                        </div>
-
-                          <Popup2/>
-                         
-                      </div>
-                      </MDBox>
-                    </Grid>
-                    
-                  </Grid>
-                </MDBox>
-              </div>
+              <ReportsChartVend/>
+         
+             
               
               
               
