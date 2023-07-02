@@ -11,45 +11,50 @@ Modal.setAppElement("#root");
 
 function Popup() {
   const [nom, setNom] = useState("");
-  const [description, setDescription] = useState("");
-  const [quantite, setQuantite] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [entreprise, setEntreprise] = useState("");
+  const [email, setEmail] = useState("");
+  const [adresse, setAdresse] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleInputChange = (e) => {
     if (e.target.name === "nom") {
       setNom(e.target.value);
-    } else if (e.target.name === "description") {
-      setDescription(e.target.value);
-    } else if (e.target.name === "quantite") {
-      setQuantite(e.target.value);
-    } else if (e.target.name === "photo") {
-      setPhoto(e.target.files[0]);
+    } else if (e.target.name === "entreprise") {
+      setEntreprise(e.target.value);
+    } else if (e.target.name === "email") {
+      setEmail(e.target.value);
+    } else if (e.target.name === "adresse") {
+      setAdresse(e.target.value);
     }
   };
 
   const handleSubmit = async () => {
+    if (!nom || !entreprise || !email || !adresse) {
+      toast.error("Veuillez remplir tous les champs obligatoires");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("nom", nom);
-    formData.append("description", description);
-    formData.append("quantite", quantite);
-    formData.append("photo", photo);
+    formData.append("entreprise", entreprise);
+    formData.append("email", email);
+    formData.append("adresse", adresse);
 
     try {
-      const response = await axios.post("http://localhost:4000/articles", formData);
+      const response = await axios.post("http://localhost:4000/clients", formData);
 
       if (response.status === 201) {
-        toast.success("Article créé avec succès");
+        toast.success("Client créé avec succès");
         setNom("");
-        setDescription("");
-        setQuantite("");
-        setPhoto(null);
+        setEntreprise("");
+        setEmail("");
+        setAdresse("");
         closeModal();
       } else {
-        toast.error("Une erreur est survenue lors de la création de l'article");
+        toast.error("Une erreur est survenue lors de la création du client");
       }
     } catch (error) {
-      toast.error("Une erreur est survenue lors de la création de l'article");
+      toast.error("Une erreur est survenue lors de la création du client");
     }
   };
 
@@ -65,7 +70,7 @@ function Popup() {
     <div className="BtnAjt">
       <MDButton onClick={openModal} variant="gradient" color="dark">
         <Icon sx={{ fontWeight: "bold" }}>add</Icon>
-        &nbsp;Ajouter un Article
+        &nbsp;Ajouter un Client
       </MDButton>
       <Modal
         isOpen={modalIsOpen}
@@ -73,7 +78,7 @@ function Popup() {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <h2 className="ModalTitle">Créer un Nouvel Article</h2>
+        <h2 className="ModalTitle">Créer un Nouveau Client</h2>
         <div className="ModalContent">
           <input
             name="nom"
@@ -81,27 +86,31 @@ function Popup() {
             placeholder="Nom"
             value={nom}
             onChange={handleInputChange}
+            required
           />
           <input
-            name="description"
+            name="entreprise"
             className="InputField"
-            placeholder="Description"
-            value={description}
+            placeholder="Entreprise"
+            value={entreprise}
             onChange={handleInputChange}
+            required
           />
           <input
-            name="quantite"
-            type="number"
+            name="email"
             className="InputField"
-            placeholder="Quantité"
-            value={quantite}
+            placeholder="Email"
+            value={email}
             onChange={handleInputChange}
+            required
           />
           <input
-            name="photo"
-            type="file"
+            name="adresse"
             className="InputField"
+            placeholder="Adresse"
+            value={adresse}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="ModalActions">
