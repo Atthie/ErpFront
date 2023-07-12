@@ -18,6 +18,9 @@ import routes from "../../routes/routesVendeur";
 import Sidenav from "examples/Sidenav";
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
+import Popupproduction from "layouts/PopupProduction/Popup";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
@@ -81,31 +84,53 @@ function Production() {
         onMouseLeave={handleOnMouseLeave}
       />
       <DashboardNavbar />
-      <MDBox py={3}>
-                <MDTypography variant="h3">Production</MDTypography>
 
-        </MDBox>
-      <DataTable py={9}
-  table={{
-    columns: [
-      { Header: "Date", accessor: "startDate", width: "25%" },
-      { Header: "Reference", accessor: "reference", width: "30%" },
-      { Header: "Vendeur", accessor: "vendeur" },
-      { Header: "Etat", accessor: "etat", width: "12%" },
-      { Header: "Action", accessor: "action", width: "12%" },
+    
+      <Popupproduction/>
+      <div className="cont234">
+                    <MDBox py={3}>
+                    
+                            <MDTypography variant="h3">Production</MDTypography>
 
-    ],
-    rows: [
-      {
-        reference: "DMO01",
-        vendeur: "Baorixile",
-        etat: "En Attente",
-        action: <MDButton variant="gradient" color="info" size="small">Valider</MDButton>,
-        startDate: "4/11/2021",
-      },
-          ]
-  }}
-/>
+                    </MDBox>
+                  <DataTable py={9}
+              table={{
+                columns: [
+                  { Header: "Date", accessor: "startDate", width: "25%" },
+                  { Header: "Reference", accessor: "reference", width: "30%" },
+                  { Header: "Vendeur", accessor: "vendeur" },
+                  { Header: "Etat", accessor: "etat", width: "12%" },
+                  { Header: "Action", accessor: "action", width: "12%" },
+
+                ],
+                rows: [
+                  {
+                    reference: "DMO01",
+                    vendeur: "Baorixile",
+                    etat: "En Attente",
+                    action: <div className="vn">
+                    <div>
+                      <MDButton
+                        variant="gradient"
+                        color="info"
+                        size="small"
+                      >
+                        <EditIcon />
+                      </MDButton>
+                    </div>
+                    <div className="ii">
+                      <MDButton variant="gradient" color="primary" size="small">
+                        <DeleteIcon />
+                      </MDButton>
+                    </div>
+                  </div>,
+                    startDate: "4/11/2021",
+                  },
+                      ]
+              }}
+            />
+      </div>
+      
     </DashboardLayout>
   );
 }
