@@ -35,8 +35,8 @@
 }
 
 /* Style des boutons */
-.confirm-button {
-  background-color: #4c77f3;
+.confirm-button1 {
+  background-color: red;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -46,8 +46,8 @@
   transition: background-color 0.3s ease;
 }
 
-.cancel-button {
-  background-color: #ccc;
+.cancel-button1 {
+  background-color: #4c77f3;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -56,22 +56,26 @@
   transition: background-color 0.3s ease;
 }
 
-/* Effet hover sur les boutons */
-.confirm-button:hover {
+.deleteRed{
+  background-color: red;
+}
+
+
+/* .confirm-button:hover {
   background-color: #3a64e8;
 }
 
 .cancel-button:hover {
   background-color: #b3b3b3;
-}
+} */
 
-/* Effet au clique sur les boutons */
+
 .confirm-button:active,
 .cancel-button:active {
   transform: scale(0.95);
 }
 
-/* Floutage de l'arrière-plan */
+
 .overlay {
   position: fixed;
   top: 0;

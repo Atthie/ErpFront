@@ -96,7 +96,7 @@ function Stocks() {
               </MDButton>
             </div>
             <div className="ii">
-              <MDButton variant="gradient" color="info" size="small" onClick={() => handleDeleteClick(article.id)}>
+              <MDButton variant="gradient" color="primary" size="small" onClick={() => handleDeleteClick(article.id)}>
                 <DeleteIcon />
               </MDButton>
             </div>
@@ -260,10 +260,10 @@ function Stocks() {
             className="input"
           />
           <div className="button-container">
-            <button type="button" onClick={handleConfirmEdit} className="confirm-button">
+            <button type="button" onClick={handleConfirmEdit} className="confirm-button1">
               Confirmer
             </button>
-            <button type="button" onClick={handleCancelEdit} className="cancel-button">
+            <button type="button" onClick={handleCancelEdit} className="cancel-button1">
               Annuler
             </button>
           </div>
@@ -279,10 +279,10 @@ function Stocks() {
         <h2 className="ModalTitle">Supprimer l'article</h2>
         <p>Êtes-vous sûr de vouloir supprimer cet article ?</p>
         <div className="button-container">
-          <button type="button" onClick={handleConfirmDelete} className="confirm-button">
+          <button type="button" onClick={handleConfirmDelete} className="confirm-button1">
             Confirmer
           </button>
-          <button type="button" onClick={handleCancelDelete} className="cancel-button">
+          <button type="button" onClick={handleCancelDelete} className="cancel-button1">
             Annuler
           </button>
         </div>
