@@ -82,7 +82,7 @@ function Cotation() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/getdemandeCotationde");
+        const response = await axios.get("http://localhost:4000/getdemandeCotationde");
         setDemandesCotation(response.data);
       } catch (error) {
         console.error("Une erreur est survenue lors de la récupération des demandes de cotation.");
@@ -150,7 +150,7 @@ function Cotation() {
       totalTTC,
     };
 
-    axios.post("http://localhost:5000/createFacture", formData)
+    axios.post("http://localhost:4000/createFacture", formData)
       .then((response) => {
         toast.success("La facture a été créée avec succès !");
         setIsModalOpen(false);

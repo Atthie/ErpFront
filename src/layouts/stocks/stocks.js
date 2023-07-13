@@ -55,7 +55,7 @@ function Stocks() {
     }
   };
 
-  const getArticleData = () => {
+  const getArticleData = (id) => {
     const articleColumns = [
       { Header: "N°", accessor: "N°", width: "5%" },
       { Header: "Photo", accessor: "photo", width: "8%" },
@@ -70,8 +70,8 @@ function Stocks() {
     const articleRows = articles.map((article, index) => {
       const statut = article.quantite >= 10 ? "Disponible" : "Non disponible";
       const photo = article.photo ? (
-        <img src={article.photo} alt={article.nom} style={{ width: "100%" }} />
-      ) : (
+    <img src={`http://localhost:4000/articles/${id}/uploads`} alt={article.nom} style={{ width: "100%" }} />
+  ) : (
         <Avatar name={article.nom} size={40} round={true} />
       );
 

@@ -19,9 +19,8 @@ import routes from "../../routes/routesEm";
 import Sidenav from "examples/Sidenav";
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
+import Popup from "layouts/Popup4/Popup";
 import Swal from "sweetalert2";
-
-
 
 function Demande_Cotation() {
 
@@ -68,7 +67,7 @@ function Demande_Cotation() {
   useEffect(() => {
     const fetchCotations = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/getdemandeCotation');
+        const response = await axios.get('http://localhost:4000/getdemandeCotation');
         setCotations(response.data);
       } catch (error) {
         console.error('Une erreur est survenue lors de la récupération des cotations :', error);
@@ -77,7 +76,6 @@ function Demande_Cotation() {
 
     fetchCotations();
   }, []);
-
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -88,7 +86,7 @@ function Demande_Cotation() {
       cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/deleteDM/${id}`)
+        axios.delete(`http://localhost:4000/deleteDM/${id}`)
           .then((response) => {
             Swal.fire('Suppression réussie', 'La demande de cotation a été supprimée.', 'success');
             setCotations(cotations.filter((cotation) => cotation.id !== id));
@@ -101,11 +99,6 @@ function Demande_Cotation() {
     });
   };
   
-
-
-
-
-
   return (
     <DashboardLayout>
       <Sidenav
@@ -117,6 +110,7 @@ function Demande_Cotation() {
         onMouseLeave={handleOnMouseLeave}
       />
       <DashboardNavbar />
+      <Popup/>
         <MDBox py={3}>
           <MDTypography variant="h3">Demande de Cotation</MDTypography>
         </MDBox>

@@ -273,56 +273,7 @@ const handleDescriptionChange = (event) => {
               </MDBox>
             </Grid>
         </Grid>
-        <MDBox py={9}>
-                <MDTypography variant="h3">Soumettre une demande d'Offre</MDTypography>
-                <div className="ligne"></div>
-        </MDBox>
         
-        <div className="vk">
-           <Grid  container  columns={3}  spacing={2}>
-                <div className="cal">
-                  <Grid item xs={18} md={4} lg={3}>          
-                     <MDInput type="date" value={selectedDate} onChange={handleDateChange}  label="Date limite"  />        
-                  </Grid>
-                </div>
-                
-                <Grid item xs={12} md={6} lg={3}>
-                  <div className="cn">
-                    <MDInput className="cn"  label="Description" sx={{ width: "96%" }} onChange={handleDescriptionChange}  multiline rows={8}   />
-                  </div>
-                
-                </Grid>
-                <Grid   item xs={19} md={6} lg={3}>
-                <MDInput label="" sx={{ width: "96%",display: "none"  }}  value={idUser}  />
-                </Grid>
-        </Grid>
-        </div>
-       
-        <MDBox mt={2.5}>
-      <Grid container justifyContent={"flex-end"}>
-        <Grid item md={1.2}>
-          <MDButton
-            variant="gradient"
-            color="info"
-            size="large"
-            onClick={terminer}
-          >
-            Terminer
-          </MDButton>
-        </Grid>
-        <Grid item>
-            <MDButton
-              variant="gradient"
-              color="info"
-              size="large"
-              onClick={ajouterArticle}
-            >
-              + Article
-            </MDButton>
-          
-        </Grid>
-      </Grid>
-    </MDBox>
       </MDBox>
       
     </DashboardLayout>
