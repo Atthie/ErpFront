@@ -96,10 +96,12 @@ function Production() {
                   <DataTable py={9}
               table={{
                 columns: [
-                  { Header: "Date", accessor: "startDate", width: "25%" },
-                  { Header: "Reference", accessor: "reference", width: "30%" },
-                  { Header: "Vendeur", accessor: "vendeur" },
+                  { Header: "Produit", accessor: "produit", width: "15%" },
+                  { Header: "Reference", accessor: "reference", width: "20%" },
+                  { Header: "Quantite", accessor: "quantite", width: "12%" },
                   { Header: "Etat", accessor: "etat", width: "12%" },
+                  { Header: "coût", accessor: "coût", width: "12%" },
+                  { Header: "Délai", accessor: "délai", width: "12%" },
                   { Header: "Action", accessor: "action", width: "12%" },
 
                 ],
