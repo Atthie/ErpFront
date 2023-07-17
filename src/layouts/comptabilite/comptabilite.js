@@ -87,46 +87,50 @@ function Comptabilite() {
       <DashboardNavbar />
 
       <Popup/>
-      <MDBox ClassName="tt" py={3}>
-                <MDTypography variant="h3">Comptabilité</MDTypography>
 
-        </MDBox>
-      <DataTable py={9}
-  table={{
-    columns: [
-      { Header: "Date", accessor: "startDate", width: "25%" },
-      { Header: "Reference", accessor: "reference", width: "30%" },
-      { Header: "Vendeur", accessor: "vendeur" },
-      { Header: "Etat", accessor: "etat", width: "12%" },
-      { Header: "Action", accessor: "action", width: "12%" },
+      <div className="compte">
+            <MDBox ClassName="tt" py={3}>
+                    <MDTypography variant="h3">Comptabilité</MDTypography>
 
-    ],
-    rows: [
-      {
-        reference: "DMO01",
-        vendeur: "Baorixile",
-        etat: "En Attente",
-        action:  (
-          <div className="vn">
-            <div>
-              <MDButton variant="gradient" color="info" size="small">
-                <EditIcon />
-              </MDButton>
-            </div>
-            
-            <div className="ii">
-              <MDButton variant="gradient" color="info" size="small">
-                <DeleteIcon />
-              </MDButton>
-            </div>
-            
-          </div>
-        ),
-        startDate: "4/11/2021",
-      },
-          ]
-  }}
-/>
+            </MDBox>
+          <DataTable py={9}
+      table={{
+        columns: [
+          { Header: "Date", accessor: "startDate", width: "25%" },
+          { Header: "Reference", accessor: "reference", width: "30%" },
+          { Header: "Vendeur", accessor: "vendeur" },
+          { Header: "Etat", accessor: "etat", width: "12%" },
+          { Header: "Action", accessor: "action", width: "12%" },
+
+        ],
+        rows: [
+          {
+            reference: "DMO01",
+            vendeur: "Baorixile",
+            etat: "En Attente",
+            action:  (
+              <div className="vn">
+                <div>
+                  <MDButton variant="gradient" color="info" size="small">
+                    <EditIcon />
+                  </MDButton>
+                </div>
+                
+                <div className="ii">
+                  <MDButton variant="gradient" color="info" size="small">
+                    <DeleteIcon />
+                  </MDButton>
+                </div>
+                
+              </div>
+            ),
+            startDate: "4/11/2021",
+          },
+              ]
+            }}
+          />
+      </div>
+      
     </DashboardLayout>
   );
 }

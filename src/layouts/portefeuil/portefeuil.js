@@ -47,7 +47,7 @@ function Portefeuil() {
 
   const fetchClients = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/clients");
+      const response = await axios.get("http://localhost:5000/clients");
       setClients(response.data.clients);
       setLoading(false);
     } catch (error) {
@@ -163,7 +163,7 @@ function Portefeuil() {
 
   const handleConfirmEdit = async () => {
     try {
-      const response = await axios.put(`http://localhost:4000/clients/${clientId}`, {
+      const response = await axios.put(`http://localhost:5000/clients/${clientId}`, {
         nom: clientNom,
         description: clientDescription,
         photo: clientPhoto,
@@ -196,7 +196,7 @@ function Portefeuil() {
 
   const handleConfirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/clients/${deleteClientId}`);
+      await axios.delete(`http://localhost:5000/clients/${deleteClientId}`);
       toast.success("Client supprimé avec succès.");
       fetchClients();
       setDeleteModalIsOpen(false);

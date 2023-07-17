@@ -45,7 +45,7 @@ function Stocks() {
 
   const fetchArticles = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/articles");
+      const response = await axios.get("http://localhost:5000/articles");
       setArticles(response.data.articles);
       setLoading(false);
     } catch (error) {
@@ -70,7 +70,7 @@ function Stocks() {
     const articleRows = articles.map((article, index) => {
       const statut = article.quantite >= 10 ? "Disponible" : "Non disponible";
       const photo = article.photo ? (
-    <img src={`http://localhost:4000/articles/${id}/uploads`} alt={article.nom} style={{ width: "100%" }} />
+    <img src={`http://localhost:5000/articles/${id}/uploads`} alt={article.nom} style={{ width: "100%" }} />
   ) : (
         <Avatar name={article.nom} size={40} round={true} />
       );
@@ -151,7 +151,7 @@ function Stocks() {
 
   const handleConfirmEdit = async () => {
     try {
-      const response = await axios.put(`http://localhost:4000/articles/${articleId}`, {
+      const response = await axios.put(`http://localhost:5000/articles/${articleId}`, {
         nom: articleNom,
         description: articleDescription,
         quantite: articleQuantite,
@@ -182,7 +182,7 @@ function Stocks() {
 
   const handleConfirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/articles/${deleteArticleId}`);
+      await axios.delete(`http://localhost:5000/articles/${deleteArticleId}`);
       toast.success("Article supprimé avec succès.");
       fetchArticles();
       setDeleteModalIsOpen(false);

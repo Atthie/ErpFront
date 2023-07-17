@@ -11,45 +11,55 @@ Modal.setAppElement("#root");
 
 function Popupproduction() {
   const [nom, setNom] = useState("");
-  const [description, setDescription] = useState("");
+  const [ressource, setRessource] = useState("");
+  const [delai, setDelai] = useState("");
+  const [etat, setEtat] = useState("");
+  const [cout, setCout] = useState("");
   const [quantite, setQuantite] = useState("");
-  const [photo, setPhoto] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleInputChange = (e) => {
     if (e.target.name === "nom") {
       setNom(e.target.value);
-    } else if (e.target.name === "description") {
-      setDescription(e.target.value);
-    } else if (e.target.name === "quantite") {
+    } else if (e.target.name === "ressource") {
+      setRessource(e.target.value);
+    } else if (e.target.name === "delai") {
+      setDelai(e.target.value);
+    } else if (e.target.name === "etat") {
+      setEtat(e.target.value);
+    } else if (e.target.name === "cout") {
+      setCout(e.target.value);
+    } else if (e.target.name === " quantite") {
       setQuantite(e.target.value);
-    } else if (e.target.name === "photo") {
-      setPhoto(e.target.files[0]);
     }
   };
 
   const handleSubmit = async () => {
     const formData = new FormData();
     formData.append("nom", nom);
-    formData.append("description", description);
+    formData.append("ressource", ressource);
+    formData.append("delai", delai);
+    formData.append("etat", etat);
+    formData.append("cout", cout);
     formData.append("quantite", quantite);
-    formData.append("photo", photo);
 
     try {
-      const response = await axios.post("http://localhost:5000/articles", formData);
+      const response = await axios.post("http://localhost:5000/productions", formData);
 
       if (response.status === 201) {
-        toast.success("Article créé avec succès");
+        toast.success("A créé avec succès");
         setNom("");
-        setDescription("");
+        setRessource("");
+        setDelai("");
+        setEtat("");
+        setCout("");
         setQuantite("");
-        setPhoto(null);
         closeModal();
       } else {
-        toast.error("Une erreur est survenue lors de la création de l'article");
+        toast.error("Une erreur est survenue lors de la création du produit");
       }
     } catch (error) {
-      toast.error("Une erreur est survenue lors de la création de l'article");
+      toast.error("Une erreur est survenue lors de la création du produit");
     }
   };
 
@@ -76,61 +86,64 @@ function Popupproduction() {
         <h2 className="ModalTitle">Nouvau Produit</h2>
         <div className="ModalContent">
           <input
-            name="Produit"
+            name="nom"
             className="InputField"
-            placeholder="Produit"
+            placeholder="Nom"
             value={nom}
             onChange={handleInputChange}
+            required 
           />
           <input
-            name="Quantite"
-            className="InputField"
-            placeholder="Quantite"
-            value={description}
-            onChange={handleInputChange}
+           name="ressource"
+           className="InputField"
+           placeholder="Ressource"
+           value={ressource}
+           onChange={handleInputChange}
+           required
           />
           <input
-            name="Ressource"
-            type="text"
+            name="quantite"
+            type="number"
             className="InputField"
-            placeholder="Ressource"
+            placeholder="quantite"
             value={quantite}
             onChange={handleInputChange}
+            required
           />
 
           <input
-            name="Delai"
+            name="delai"
             type="text"
             className="InputField"
-            placeholder="Délai"
-            value={quantite}
+            placeholder="delai"
+            value={delai}
             onChange={handleInputChange}
           />
 
          <input
-            name="Etat"
+            name="etat"
             type="texte"
             className="InputField"
-            placeholder="Etat"
-            value={quantite}
+            placeholder="etat"
+            value={etat}
             onChange={handleInputChange}
           />
 
           <input
-            name="Coût"
+            name="cout"
             type="text"
             className="InputField"
-            placeholder="Coût"
-            value={quantite}
+            placeholder="cout"
+            value={cout}
             onChange={handleInputChange}
           />
           
         </div>
         <div className="ModalActions">
-          <button className="CancelButton" onClick={closeModal}>
+          <button className="CancelButton2" onClick={closeModal}>
             Annuler
           </button>
-          <button className="ConfirmButton" onClick={handleSubmit}>
+          <button className="ConfirmButton1" onClick={handleSubmit}>
             Confirmer
           </button>
         </div>

@@ -48,8 +48,17 @@
   margin-right: 10px;
   cursor: pointer;
 }
+.CancelButton2 {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
 
-.ConfirmButton {
+.ConfirmButton1 {
   background-color: red;
   color: #fff;
   border: none;

@@ -27,7 +27,7 @@ function Popup() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/demandeCotations", {
+      const response = await axios.post("http://localhost:5000/demandeCotations", {
         nom,
         description,
         duree,
@@ -93,10 +93,10 @@ function Popup() {
           />
         </div>
         <div className="ModalActions">
-          <button className="CancelButton" onClick={closeModal}>
+          <button className="CancelButton2" onClick={closeModal}>
             Annuler
           </button>
-          <button className="ConfirmButton" onClick={handleSubmit}>
+          <button className="ConfirmButton1" onClick={handleSubmit}>
             Confirmer
           </button>
         </div>

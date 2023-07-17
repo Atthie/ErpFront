@@ -84,8 +84,6 @@ function Production() {
         onMouseLeave={handleOnMouseLeave}
       />
       <DashboardNavbar />
-
-    
       <Popupproduction/>
       <div className="cont234">
                     <MDBox py={3}>

@@ -105,10 +105,10 @@ function Popup() {
           />
         </div>
         <div className="ModalActions">
-          <button className="CancelButton" onClick={closeModal}>
+          <button className="CancelButton2" onClick={closeModal}>
             Annuler
           </button>
-          <button className="ConfirmButton" onClick={handleSubmit}>
+          <button className="ConfirmButton1" onClick={handleSubmit}>
             Confirmer
           </button>
         </div>
