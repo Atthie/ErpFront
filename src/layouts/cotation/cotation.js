@@ -12,6 +12,7 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from "axios";
 import routes from "../../routes/routesVendeur";
 import Sidenav from "examples/Sidenav";
@@ -24,6 +25,7 @@ import { useForm } from "react-hook-form";
 import Modal from "react-modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./cotation.css";
 
 function Cotation() {
   const getRoutes = (allRoutes) =>
@@ -69,23 +71,26 @@ function Cotation() {
     }
   };
 
-  const [demandesCotation, setDemandesCotation] = useState([]);
+  const [demandeCotations, setDemandeCotations] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDemande, setSelectedDemande] = useState(null);
+  const [selectedDemandeCotation, setSelectedDemandeCotation] = useState(null);
+  const [popupIsOpen, setPopupIsOpen] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/getdemandeCotationde");
-        setDemandesCotation(response.data);
+        const response = await axios.get("http://localhost:4000/demandeCotations");
+        setDemandeCotations(response.data.demandeCotations);
       } catch (error) {
-        console.error("Une erreur est survenue lors de la récupération des demandes de cotation.");
+        console.error("Une erreur est survenue lors de la récupération des demandes de cotations.");
+        toast.error("Une erreur est survenue lors de la récupération des demandes de cotations.");
       }
     };
 
@@ -98,50 +103,73 @@ function Cotation() {
     { Header: "Description", accessor: "description", width: "30%" },
     { Header: "Statut", accessor: "statut", width: "10%" },
     { Header: "Etat", accessor: "etat", width: "12%" },
-    { Header: "DateFin", accessor: "endDate", width: "15%" },
+    { Header: "Date_limite", accessor: "dateFin", width: "15%" },
     { Header: "Action", accessor: "action", width: "12%" },
   ];
 
-  const demandeCotationRows = demandesCotation.map((demande) => ({
-    "N°": demande.reference,
-    nom: demande.vendeur,
-    description: demande.description,
-    statut: demande.repondu ? "Ancienne" : "Nouvelle",
-    etat: demande.etat,
-    action: (
-      <div className="vn">
-        <div>
-          <MDButton variant="gradient" color="info" size="small" onClick={() => handleOpenModal(demande)}>
-            Repondre
-          </MDButton>
-        </div>
-      </div>
-    ),
-    endDate: demande.startDate,
-  }));
+  const demandeCotationRows = demandeCotations.map((demandeCotation, index) => {
+    const truncatedDescription = demandeCotation.description.split(' ').slice(0, 3).join(' ') + '...';
+    return {
+     "N°": index + 1,
+     nom: demandeCotation.nom,
+     description: truncatedDescription,
+     statut: demandeCotation.repondu ? "Ancienne" : "Nouvelle",
+     etat: demandeCotation.etat,
+     dateFin: demandeCotation.dateFin.split('T')[0],
+     action: (
+       <div className="vn">
+         <div>
+           <MDButton variant="gradient" color="info" size="small" onClick={() => handleOpenModal(demandeCotation)}>
+             Repondre
+           </MDButton>
+          </div> 
+          <div className="ii">
+            <MDButton variant="gradient" color="info" size="small" onClick={() => handlePopupOpen(demandeCotation.id)}>
+              <VisibilityIcon />
+            </MDButton>
+          </div>
+         
+       </div>
+     ),
+    }
+  });
 
-  const handleOpenModal = (demande) => {
-    setSelectedDemande(demande);
+  const handleOpenModal = (demandeCotation) => {
+    setSelectedDemandeCotation(demandeCotation);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setSelectedDemande(null);
+    setSelectedDemandeCotation(null);
     setIsModalOpen(false);
+    reset(); // Réinitialiser le formulaire lorsque le modal est fermé
+  };
+  const handlePopupOpen = (demandeCotationId) => {
+    const selectedCotation = demandeCotations.find(cotation => cotation.id === demandeCotationId);
+    if (selectedCotation) {
+      setSelectedDemandeCotation(selectedCotation);
+      setPopupIsOpen(true);
+    }
+  };
+
+  const handlePopupClose = () => {
+    setSelectedDemandeCotation(null);
+    setPopupIsOpen(false);
   };
 
   const handleFormSubmit = (data) => {
-    // Envoyer la réponse de la facture à l'API
-    const { nomduvendeur,entreprise, description, articles } = data;
+    // Vérifier si tous les champs sont remplis
+    if (!data.nomVendeur || !data.entreprise || !data.description || !data.articles || !data.totalHT || !data.taxes || !data.totalTTC) {
+      toast.error("Tous les champs sont requis.");
+      return;
+    }
 
-    // Calculer les totaux
-    const totalHT = articles.reduce((total, article) => total + article.quantite * article.prixUnitaire, 0);
-    const taxes = totalHT * 0.2;
-    const totalTTC = totalHT + taxes;
+    // Envoyer la réponse de la facture à l'API
+    const { nomVendeur, entreprise, description, articles, totalHT, taxes, totalTTC } = data;
 
     // Envoyer les données à l'API
     const formData = {
-      nomduvendeur,
+      nomduvendeur: nomVendeur,
       entreprise,
       description,
       articles,
@@ -150,10 +178,12 @@ function Cotation() {
       totalTTC,
     };
 
-    axios.post("http://localhost:4000/createFacture", formData)
+    axios
+      .post("http://localhost:4000/createFacture", formData)
       .then((response) => {
         toast.success("La facture a été créée avec succès !");
         setIsModalOpen(false);
+        reset(); // Réinitialiser le formulaire après la soumission réussie
       })
       .catch((error) => {
         console.error("Une erreur est survenue lors de la création de la facture.", error);
@@ -173,6 +203,74 @@ function Cotation() {
       />
 
       <DashboardNavbar />
+       {popupIsOpen && selectedDemandeCotation && (
+        <Modal
+          isOpen={popupIsOpen}
+          onRequestClose={handlePopupClose}
+          contentLabel="Détails de la demande de cotation"
+          className="modal"
+          overlayClassName="overlay"
+        >
+          <>
+            <h2 className="ModalTitle">Détails de la demande de cotation</h2>
+            <div>
+             <label htmlFor="nom">Nom :</label>
+             <input
+               type="text"
+               id="nom"
+               value={selectedDemandeCotation.nom}
+               className="input"
+               readOnly
+             />
+             
+             <label htmlFor="description">Description :</label>
+             <textarea
+               type="text"
+               id="description"
+               value={selectedDemandeCotation.description}
+               className="TextaeaField1"
+               readOnly
+             />
+             
+             <label htmlFor="date">Date :</label>
+             <input
+               type="text"
+               id="date"
+               value={selectedDemandeCotation.date}
+               className="input"
+               readOnly
+             />
+             
+             <label htmlFor="date_limite">Date Limite :</label>
+             <input
+               type="text"
+               id="date_limite"
+               value={selectedDemandeCotation.date_limite}
+               className="input"
+               readOnly
+             />
+             
+             <label htmlFor="duree">Durée :</label>
+             <input
+               type="text"
+               id="duree"
+               value={selectedDemandeCotation.duree}
+               className="input"
+               readOnly
+             />
+             
+             <label htmlFor="etat">Etat :</label>
+             <input
+               type="text"
+               id="etat"
+               value={selectedDemandeCotation.etat}
+               className="input"
+               readOnly
+             />
+            </div>
+          </>
+        </Modal>
+      )}
       <MDBox py={3}>
         <MDTypography variant="h3">Cotation</MDTypography>
       </MDBox>
@@ -185,104 +283,103 @@ function Cotation() {
         }}
       />
 
-       <Modal
+      <Modal
         isOpen={isModalOpen}
         onRequestClose={handleCloseModal}
         contentLabel="Répondre à la demande de cotation"
         className="modal"
-       >
-         <form onSubmit={handleSubmit(handleFormSubmit)}>
-           <h2>Répondre à la demande de cotation</h2>
-       
-           <div className="form-group">
-             <label htmlFor="nomVendeur">Nom du vendeur</label>
-             <input
-               type="text"
-               className={`form-control ${errors.nomVendeur ? "is-invalid" : ""}`}
-               id="nomVendeur"
-               {...register("nomVendeur", { required: true })}
-             />
-             {errors.nomVendeur && <div className="invalid-feedback">Ce champ est requis.</div>}
-           </div>
-       
-           <div className="form-group">
-             <label htmlFor="entreprise">Entreprise</label>
-             <input
-               type="text"
-               className={`form-control ${errors.entreprise ? "is-invalid" : ""}`}
-               id="entreprise"
-               {...register("entreprise", { required: true })}
-             />
-             {errors.entreprise && <div className="invalid-feedback">Ce champ est requis.</div>}
-           </div>
-       
-           <div className="form-group">
-             <label htmlFor="description">Description</label>
-             <textarea
-               className={`form-control ${errors.description ? "is-invalid" : ""}`}
-               id="description"
-               {...register("description", { required: true })}
-             ></textarea>
-             {errors.description && <div className="invalid-feedback">Ce champ est requis.</div>}
-           </div>
-       
-           <div className="form-group">
-             <label htmlFor="articles">Articles</label>
-             <input
-               type="text"
-               className={`form-control ${errors.articles ? "is-invalid" : ""}`}
-               id="articles"
-               {...register("articles", { required: true })}
-             />
-             {errors.articles && <div className="invalid-feedback">Ce champ est requis.</div>}
-           </div>
-       
-           <div className="form-group">
-             <label htmlFor="totalHT">Total HT</label>
-             <input
-               type="number"
-               className={`form-control ${errors.totalHT ? "is-invalid" : ""}`}
-               id="totalHT"
-               {...register("totalHT", { required: true })}
-             />
-             {errors.totalHT && <div className="invalid-feedback">Ce champ est requis.</div>}
-           </div>
-       
-           <div className="form-group">
-             <label htmlFor="taxes">Taxes</label>
-             <input
-               type="number"
-               className={`form-control ${errors.taxes ? "is-invalid" : ""}`}
-               id="taxes"
-               {...register("taxes", { required: true })}
-             />
-             {errors.taxes && <div className="invalid-feedback">Ce champ est requis.</div>}
-           </div>
-       
-           <div className="form-group">
-             <label htmlFor="totalTTC">Total TTC</label>
-             <input
-               type="number"
-               className={`form-control ${errors.totalTTC ? "is-invalid" : ""}`}
-               id="totalTTC"
-               {...register("totalTTC", { required: true })}
-             />
-             {errors.totalTTC && <div className="invalid-feedback">Ce champ est requis.</div>}
-           </div>
-       
-           <div className="form-group">
-             <button type="submit" className="btn btn-primary">
-               Envoyer
-             </button>
-             <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
-               Annuler
-             </button>
-           </div>
-         </form>
-     </Modal>
-       
-       
-    <ToastContainer />
+      >
+        <form onSubmit={handleSubmit(handleFormSubmit)}>
+          <h2 className="ModalTitle">Répondre à la demande de cotation</h2>
+
+          <div className="form-group">
+            <label className="label">Nom du vendeur</label>
+            <input
+              type="text"
+              className={`input ${errors.nomVendeur ? "is-invalid" : ""}`}
+              id="nomVendeur"
+              {...register("nomVendeur", { required: true })}
+            />
+            {errors.nomVendeur && <div className="invalid-feedback">Ce champ est requis.</div>}
+          </div>
+
+          <div className="form-group">
+            <label className="label">Entreprise</label>
+            <input
+              type="text"
+              className={`input ${errors.entreprise ? "is-invalid" : ""}`}
+              id="entreprise"
+              {...register("entreprise", { required: true })}
+            />
+            {errors.entreprise && <div className="invalid-feedback">Ce champ est requis.</div>}
+          </div>
+
+          <div className="form-group">
+            <label className="label">Description</label>
+            <textarea
+              className={`input ${errors.description ? "is-invalid" : ""}`}
+              id="description"
+              {...register("description", { required: true })}
+            ></textarea>
+            {errors.description && <div className="invalid-feedback">Ce champ est requis.</div>}
+          </div>
+
+          <div className="form-group">
+            <label className="label">Articles</label>
+            <input
+              type="text"
+              className={`input ${errors.articles ? "is-invalid" : ""}`}
+              id="articles"
+              {...register("articles", { required: true })}
+            />
+            {errors.articles && <div className="invalid-feedback">Ce champ est requis.</div>}
+          </div>
+
+          <div className="form-group">
+            <label className="label">Total HT</label>
+            <input
+              type="number"
+              className={`input ${errors.totalHT ? "is-invalid" : ""}`}
+              id="totalHT"
+              {...register("totalHT", { required: true })}
+            />
+            {errors.totalHT && <div className="invalid-feedback">Ce champ est requis.</div>}
+          </div>
+
+          <div className="form-group">
+            <label className="label">Taxes</label>
+            <input
+              type="number"
+              className={`input ${errors.taxes ? "is-invalid" : ""}`}
+              id="taxes"
+              {...register("taxes", { required: true })}
+            />
+            {errors.taxes && <div className="invalid-feedback">Ce champ est requis.</div>}
+          </div>
+
+          <div className="form-group">
+            <label className="label">Total TTC</label>
+            <input
+              type="number"
+              className={`input ${errors.totalTTC ? "is-invalid" : ""}`}
+              id="totalTTC"
+              {...register("totalTTC", { required: true })}
+            />
+            {errors.totalTTC && <div className="invalid-feedback">Ce champ est requis.</div>}
+          </div>
+
+          <div className="button-container">
+            <button type="submit" className="confirm-button">
+             Envoyer
+            </button>
+            <button type="button" className="cancel-button" onClick={handleCloseModal}>
+             Annuler
+            </button> 
+          </div> 
+        </form> 
+      </Modal>
+
+      <ToastContainer />
     </DashboardLayout>
   );
 }
