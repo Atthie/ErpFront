@@ -13,6 +13,8 @@ function Popup() {
   const [nom, setNom] = useState("");
   const [description, setDescription] = useState("");
   const [duree, setDuree] = useState("");
+  const [etat, setEtat] = useState("Veuillez déterminer l'état");
+  const [dateFin, setDateFin] = useState(""); // Nouvel état pour la date de fin
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleInputChange = (e) => {
@@ -22,6 +24,13 @@ function Popup() {
       setDescription(e.target.value);
     } else if (e.target.name === "duree") {
       setDuree(e.target.value);
+      if (e.target.value === "3") {
+        setEtat("Urgente");
+      } else {
+        setEtat("En Cour");
+      }
+    } else if (e.target.name === "dateFin") {
+      setDateFin(e.target.value); // Met à jour la date de fin
     }
   };
 
@@ -31,6 +40,8 @@ function Popup() {
         nom,
         description,
         duree,
+        etat,
+        dateFin, // Ajoute la date de fin dans les données de la demande de cotation
       });
 
       if (response.status === 201) {
@@ -38,6 +49,8 @@ function Popup() {
         setNom("");
         setDescription("");
         setDuree("");
+        setEtat("Veuillez déterminer l'état");
+        setDateFin(""); // Réinitialise la date de fin
         closeModal();
       } else {
         toast.error("Une erreur est survenue lors de la création de la demande de cotation");
@@ -83,14 +96,35 @@ function Popup() {
             value={description}
             onChange={handleInputChange}
           />
-          <input
-            name="duree"
-            type="number"
-            className="InputField1"
-            placeholder="Durée"
-            value={duree}
-            onChange={handleInputChange}
-          />
+          <div className="Modal2">
+            <input
+              name="duree"
+              type="number"
+              className="InputField1"
+              placeholder="Durée"
+              value={duree}
+              onChange={handleInputChange}
+            />
+            <input
+              name="dateFin"
+              type="date"
+              className="InputField1"
+              placeholder="Date de fin"
+              value={dateFin}
+              onChange={handleInputChange}
+            />
+            <select
+              name="etat"
+              className="SelectField"
+              value={etat}
+              onChange={handleInputChange}
+            >
+              <option disabled>Veuillez déterminer l'état</option>
+              <option value="Urgente">Urgente</option>
+              <option value="En Cour">En Cour</option>
+              <option value="Valider">Valider</option>
+            </select>
+          </div>
         </div>
         <div className="ModalActions">
           <button className="CancelButton" onClick={closeModal}>

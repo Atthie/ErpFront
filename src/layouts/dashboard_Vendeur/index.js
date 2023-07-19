@@ -1,34 +1,23 @@
 
 import { useState, useEffect} from "react";
-
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-
 import Icon from "@mui/material/Icon";
-
 import MDBox from "components/MDBox";
-
 import Sidenav from "examples/Sidenav";
-
 import routes from "../../routes/routesVendeur";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
-
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 import Grid from "@mui/material/Grid";
-
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
-
-// Data
 import reportsBarChartData from "layouts/dashboard_EM/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard_EM/data/reportsLineChartData";
-
 import ReportsChartVend from "layouts/stateVen/stateVen";
-
 import "../../App.css"
 
 function Dashboard_Vendeur() {
