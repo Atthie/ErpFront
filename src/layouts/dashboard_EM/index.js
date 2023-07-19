@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 
 // ...
 
-
+import ReportsChartVend from "layouts/stateVen/stateVen";
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 import Grid from "@mui/material/Grid";
@@ -275,6 +275,10 @@ const handleDescriptionChange = (event) => {
         </Grid>
         
       </MDBox>
+    <div className="entre">
+       <ReportsChartVend/>
+    </div>
+     
       
     </DashboardLayout>
   );
