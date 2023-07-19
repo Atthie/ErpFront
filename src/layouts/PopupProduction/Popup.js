@@ -34,34 +34,68 @@ function Popupproduction() {
     }
   };
 
-  const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("nom", nom);
-    formData.append("ressource", ressource);
-    formData.append("delai", delai);
-    formData.append("etat", etat);
-    formData.append("cout", cout);
-    formData.append("quantite", quantite);
-
-    try {
-      const response = await axios.post("http://localhost:5000/productions", formData);
-
-      if (response.status === 201) {
-        toast.success("A créé avec succès");
-        setNom("");
-        setRessource("");
-        setDelai("");
-        setEtat("");
-        setCout("");
-        setQuantite("");
-        closeModal();
-      } else {
-        toast.error("Une erreur est survenue lors de la création du produit");
-      }
-    } catch (error) {
-      toast.error("Une erreur est survenue lors de la création du produit");
-    }
+  const handleSubmit = () => {
+    // Créez un objet contenant les données que vous souhaitez envoyer à votre API
+    const data = {
+      nom: nom,
+      ressource: ressource,
+      delai: delai,
+      etat: etat,
+      cout: cout
+    };
+  
+    // Envoyez les données à votre API en utilisant Axios
+    axios.post('http://localhost:5000/Production/enregistrer', data)
+      .then(response => {
+        // Réponse de succès de l'API
+        console.log(response.status);
+        // Réinitialisez les valeurs des champs après avoir envoyé les données avec succès
+        setNom('');
+        setRessource('');
+        setDelai('');
+        setEtat('');
+        setCout('');
+        setModalIsOpen(false);
+      })
+      
+      .catch(error => {
+        // Erreur lors de l'envoi des données à l'API
+        console.log(error);
+      });
   };
+  
+
+  // const handleSubmit = async () => {
+  //   // const formData = new FormData();
+
+
+  //   //formData.append("nom", );
+  //   // formData.append("ressource", ressource);
+  //   // formData.append("delai", delai);
+  //   // formData.append("etat", etat);
+  //   // formData.append("cout", cout);
+  //   // formData.append("quantite", quantite);
+
+  //   const id =1
+  //   try {
+  //     const response = await axios.post("http://localhost:5000/Production/enregistrer", id);
+
+  //     if (response.status === 201) {
+  //       toast.success("A créé avec succès");
+  //       setNom("");
+  //       setRessource("");
+  //       setDelai("");
+  //       setEtat("");
+  //       setCout("");
+  //       setQuantite("");
+  //       closeModal();
+  //     } else {
+  //       toast.error("Une erreur est survenue lors de la création du produit");
+  //     }
+  //   } catch (error) {
+  //     toast.error("Une erreur est survenue lors de la création du produit");
+  //   }
+  // };
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -101,19 +135,20 @@ function Popupproduction() {
            onChange={handleInputChange}
            required
           />
-          <input
+
+          {/* <input
             name="quantite"
             type="number"
             className="InputField"
             placeholder="quantite"
             value={quantite}
             onChange={handleInputChange}
-            required
-          />
+            
+          /> */}
 
           <input
             name="delai"
-            type="text"
+            type="date"
             className="InputField"
             placeholder="delai"
             value={delai}

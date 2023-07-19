@@ -1,15 +1,15 @@
 import { useState, useEffect} from "react";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
+import axios from 'axios'
+
 
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
+
 import DataTable from "examples/Tables/DataTable";
 import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
@@ -41,6 +41,7 @@ function Production() {
     });
     const [controller, dispatch] = useMaterialUIController();
     const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
+    const [tableData, setTableData] = useState([]);
 
     const [onMouseEnter, setOnMouseEnter] = useState(true);
     const { pathname } = useLocation();
@@ -73,6 +74,16 @@ function Production() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
 
+  useEffect(() => {
+    axios.get('http://localhost:5000/Production')
+      .then(response => {
+        setTableData(response.data); // Mettez à jour l'état avec les données récupérées depuis l'API
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des données de l\'API', error);
+      });
+  }, []);
+  
   return (
     <DashboardLayout>
       <Sidenav
@@ -94,27 +105,24 @@ function Production() {
                   <DataTable py={9}
               table={{
                 columns: [
-                  { Header: "Produit", accessor: "produit", width: "15%" },
-                  { Header: "Reference", accessor: "reference", width: "20%" },
-                  { Header: "Quantite", accessor: "quantite", width: "12%" },
+                  { Header: "Produit", accessor: "nom", width: "15%" },
+                  { Header: "Ressource", accessor: "ressource", width: "20%" },
                   { Header: "Etat", accessor: "etat", width: "12%" },
-                  { Header: "coût", accessor: "coût", width: "12%" },
-                  { Header: "Délai", accessor: "délai", width: "12%" },
+                  { Header: "coût", accessor: "cout", width: "12%" },
+                  { Header: "Délai", accessor: "delai", width: "12%" },
                   { Header: "Action", accessor: "action", width: "12%" },
 
                 ],
-                rows: [
-                  {
-                    reference: "DMO01",
-                    vendeur: "Baorixile",
-                    etat: "En Attente",
-                    action: <div className="vn">
+                rows: tableData.map(item => ({
+                  nom: item.nom,
+                  ressource: item.ressource,
+                  vendeur: item.vendeur,
+                  etat: item.etat,
+                  delai:item.delai,
+                  cout:item.cout,
+                  action: <div className="vn">
                     <div>
-                      <MDButton
-                        variant="gradient"
-                        color="info"
-                        size="small"
-                      >
+                      <MDButton variant="gradient" color="info" size="small">
                         <EditIcon />
                       </MDButton>
                     </div>
@@ -124,9 +132,11 @@ function Production() {
                       </MDButton>
                     </div>
                   </div>,
-                    startDate: "4/11/2021",
-                  },
-                      ]
+
+                
+                  startDate: item.startDate,
+                })),
+                
               }}
             />
       </div>
