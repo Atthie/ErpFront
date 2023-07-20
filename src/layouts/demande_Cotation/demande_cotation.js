@@ -43,7 +43,7 @@ function Demande_Cotation() {
 
   const fetchDemandeCotations = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/demandeCotations");
+      const response = await axios.get("http://localhost:5000/demandeCotations");
       setDemandeCotations(response.data.demandeCotations);
       setLoading(false);
     } catch (error) {

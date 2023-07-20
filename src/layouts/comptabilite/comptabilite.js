@@ -3,7 +3,7 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "co
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-
+import axios from "axios";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
@@ -22,6 +22,7 @@ import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 import Popup from "layouts/Popup/Popup";
 import "../../App.css"
+import PopupComptabilite from "layouts/Popup copy/Popup";
 
 
 
@@ -42,7 +43,7 @@ function Comptabilite() {
     });
     const [controller, dispatch] = useMaterialUIController();
     const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
-
+    const [tablecomptReq, setTablecomptReq] = useState([]);
     const [onMouseEnter, setOnMouseEnter] = useState(true);
     const { pathname } = useLocation();
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -74,6 +75,17 @@ function Comptabilite() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
 
+  useEffect(() => {
+    axios.get('http://localhost:5000/montant')
+      .then(response => {
+        setTablecomptReq(response.data); // Mettez à jour l'état avec les données récupérées depuis l'API
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des données de l\'API', error);
+      });
+  }, []);
+
+
   return (
     <DashboardLayout>
       <Sidenav
@@ -86,7 +98,7 @@ function Comptabilite() {
       />
       <DashboardNavbar />
 
-      <Popup/>
+      <PopupComptabilite/>
 
       <div className="compte">
             <MDBox ClassName="tt" py={3}>
@@ -97,18 +109,18 @@ function Comptabilite() {
       table={{
         columns: [
           { Header: "Date", accessor: "startDate", width: "25%" },
-          { Header: "Reference", accessor: "reference", width: "30%" },
-          { Header: "Vendeur", accessor: "vendeur" },
-          { Header: "Etat", accessor: "etat", width: "12%" },
+          { Header: "montant", accessor: "montant", width: "30%" },
+          { Header: "description", accessor: "description" },
+          { Header: "transaction", accessor: "transaction", width: "12%" },
           { Header: "Action", accessor: "action", width: "12%" },
 
         ],
-        rows: [
-          {
-            reference: "DMO01",
-            vendeur: "Baorixile",
-            etat: "En Attente",
-            action:  (
+        rows:tablecomptReq.map(item =>({ 
+          montant: item.montant,
+          description: item.description,
+          transaction: item.transaction,
+          
+          action:  
               <div className="vn">
                 <div>
                   <MDButton variant="gradient" color="info" size="small">
@@ -123,10 +135,11 @@ function Comptabilite() {
                 </div>
                 
               </div>
-            ),
+            ,
             startDate: "4/11/2021",
-          },
-              ]
+
+        })),
+           
             }}
           />
       </div>
